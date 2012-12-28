@@ -30,23 +30,9 @@ DeclareAttributeWithDocumentation( "UnderlyingCharacterTable",
         [ "Characters", "Methods_for_all_objects" ]
         );
 
-DeclareAttributeWithDocumentation( "DegreeOfCharacter",
-        IsElementOfGrothendieckGroup,
-        "Returns the degree of the character.",
-        "an integer",
-        [ "Characters", "Methods_for_all_objects" ]
-        );
-
 DeclareAttributeWithDocumentation( "DualCharacter",
         IsElementOfGrothendieckGroup,
         "Returns the dual of a graded character.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
-        );
-
-DeclareAttributeWithDocumentation( "DeterminantOfCharacter",
-        IsElementOfGrothendieckGroup,
-        "Returns the determinant of a graded character.",
         "a graded Grothendieck ring element",
         [ "Characters", "Methods_for_all_objects" ]
         );

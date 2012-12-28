@@ -30,6 +30,13 @@ DeclareAttributeWithDocumentation( "Dimension",
         [ "Characters", "Methods_for_all_objects" ]
         );
 
+DeclareAttributeWithDocumentation( "UnderlyingPolynomial",
+        IsElementOfGrothendieckGroup,
+        "Returns the underlying polynomial.",
+        "an Laurent polynomial",
+        [ "Characters", "Methods_for_all_objects" ]
+        );
+
 DeclareAttributeWithDocumentation( "ExteriorPowers",
         IsElementOfGrothendieckGroup,
         "Returns the exterior powers of the Grothendieck ring element.",

@@ -35,16 +35,23 @@ BindGlobal( "TheTypeElementOfGradedRelativeRing",
 
 ##
 InstallMethod( IsEquiDegree,
+        "for elements of a graded ring",
+        [ IsElementOfGradedRingRep ],
+        
+  function( chi )
+    
+    return Length( EvalRingElement( chi ) ) < 2;
+    
+end );
+
+##
+InstallMethod( IsEquiDegree,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep ],
         
   function( chi )
     
-    chi := FreeCover( chi );
-    
-    chi := Socle( chi );
-    
-    return Length( EvalRingElement( chi ) ) < 2;
+    return IsEquiDegree( Socle( FreeCover( chi ) ) );
     
 end );
 
@@ -55,13 +62,37 @@ end );
 ####################################
 
 ##
-InstallMethod( ExteriorPowers,
+InstallMethod( Dimension,
         "for elements of a graded ring",
         [ IsElementOfGradedRingRep ],
         
   function( chi )
     
-    return Sum( [ 0 .. EvalRingElement( chi )[1][1] ], e -> ExteriorPower( chi, e ) );
+    if IsZero( chi ) then
+        return 0;
+    fi;
+    
+    chi := EvalRingElement( chi );
+    
+    if Length( chi ) <> 1 then
+        Error( "the character is not concentrated one degree\n" );
+    fi;
+    
+    return chi[1][1];
+    
+end );
+
+##
+InstallMethod( UnderlyingPolynomial,
+        "for elements of a graded ring",
+        [ IsElementOfGradedRingRep ],
+        
+  function( chi )
+    local x;
+    
+    x := VariableForGrothendieckHilbertSeries( );
+    
+    return Sum( EvalRingElement( chi ), a -> a[1] * x^a[2]  );
     
 end );
 
@@ -71,11 +102,21 @@ InstallMethod( PositivePart,
         [ IsElementOfGradedRingRep ],
         
   function( chi )
-    local ring;
     
     chi := List( EvalRingElement( chi ), a -> [ Maximum( a[1], 0 ), a[2] ]  );
     
     return ElementOfGradedRing( chi );
+    
+end );
+
+##
+InstallMethod( UnderlyingPolynomial,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep ],
+        
+  function( chi )
+    
+    return UnderlyingPolynomial( HomogeneousParts( chi ) );
     
 end );
 
@@ -88,7 +129,7 @@ InstallMethod( DualOfBaseSpace,
     
     chi := EvalRingElement( BaseSpace( chi ) );
     
-    return ElementOfGradedRing( [ [ chi[1][1], -chi[1][2] ] ] );
+    return ElementOfGradedRing( [ [ chi[1][1], -chi[1][2] ] ], IsEquiDegree );
     
 end );
 
@@ -98,14 +139,15 @@ InstallMethod( TipOfModule,
         [ IsElementOfGradedRingRep ],
         
   function( chi )
+    local coeffs;
     
     if IsZero( chi ) then
         return chi;
     fi;
     
-    chi := EvalRingElement( chi );
+    coeffs := EvalRingElement( chi );
     
-    return ElementOfGradedRing( [ chi[Length( chi )] ] );
+    return chi!.ElementOfGradedRing( [ coeffs[Length( coeffs )] ] );
     
 end );
 
@@ -121,15 +163,24 @@ InstallMethod( TipOfModule,
 end );
 
 ##
+InstallMethod( ExteriorPowers,
+        "for elements of a graded ring",
+        [ IsElementOfGradedRingRep and IsEquiDegree ],
+        
+  function( chi )
+    
+    return Sum( [ 0 .. Dimension( chi ) ], e -> ExteriorPower( chi, e ) );
+    
+end );
+
+##
 InstallMethod( Dimension,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep ],
         
   function( chi )
     
-    chi := EvalRingElement( BaseSpace( chi ) )[1][1];
-    
-    return chi - 1;
+    return Dimension( BaseSpace( chi ) ) - 1;
     
 end );
 
@@ -139,11 +190,11 @@ InstallMethod( DualOfExteriorPowersOfBaseSpace,
         [ IsElementOfGradedRelativeRingRep ],
         
   function( chi )
-    local d, chiV, chiW;
-    
-    d := Dimension( chi ) + 1;
+    local chiV, d, chiW;
     
     chiV := BaseSpace( chi );
+    
+    d := Dimension( chiV );
     
     chiW := DualOfBaseSpace( chi );
     
@@ -170,7 +221,7 @@ InstallMethod( PositivePart,
         
   function( chi )
     
-    return ElementOfGradedRelativeRing(
+    return chi!.ElementOfGradedRelativeRing(
                    PositivePart( HomogeneousParts( chi ) ),
                    BaseSpace( chi ) );
     
@@ -201,7 +252,7 @@ InstallMethod( FreeCoverOfTip,
     
     tip := TipOfModule( chi );
     
-    return FreeElementOfGradedRelativeRing( det * tip, chiV );
+    return chi!.FreeElementOfGradedRelativeRing( det * tip, chiV );
     
 end );
 
@@ -252,7 +303,7 @@ InstallMethod( FreeCover,
 ##
 InstallMethod( ExteriorPower,
         "for elements of a graded ring",
-        [ IsElementOfGradedRingRep, IsInt ],
+        [ IsElementOfGradedRingRep and IsEquiDegree, IsInt ],
         
   function( chi, e )
     
@@ -345,7 +396,9 @@ InstallGlobalFunction( ElementOfGradedRing,
         ring := HOMALG_MATRICES.ZZ;
     fi;
     
-    r := rec( ring := ring );
+    r := rec( ring := ring,
+              ElementOfGradedRing :=
+              ElementOfGradedRing );
     
     Sort( graded_elm, function( a, b ) return a[2] < b[2]; end );
     
@@ -498,14 +551,18 @@ InstallGlobalFunction( ElementOfGradedRelativeRing,
         ring := HOMALG_MATRICES.ZZ;
     fi;
     
-    r := rec( ring := ring );
+    r := rec( ring := ring,
+              ElementOfGradedRelativeRing :=
+              ElementOfGradedRelativeRing,
+              FreeElementOfGradedRelativeRing :=
+              FreeElementOfGradedRelativeRing);
     
     if not IsElementOfGradedRingRep( fiber ) then
         fiber := ElementOfGradedRing( fiber );
     fi;
     
     if not IsElementOfGradedRingRep( base ) then
-        base := ElementOfGradedRing( [ [ base, -1 ] ] );
+        base := ElementOfGradedRing( [ [ base, -1 ] ], IsEquiDegree );
     fi;
     
     if IsFree in properties then
