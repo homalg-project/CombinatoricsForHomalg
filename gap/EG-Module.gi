@@ -74,6 +74,39 @@ InstallMethod( PositivePart,
 end );
 
 ##
+InstallMethod( ForgetGroupAction,
+        "for elements of a Grothendieck ring of a group",
+        [ IsElementOfGrothendieckRingOfGroupRep ],
+        
+  function( chi )
+    
+    chi := EvalRingElement( chi );
+    
+    return DegreeOfCharacter( chi );
+    
+end );
+
+##
+InstallMethod( ForgetGroupAction,
+        "for elements of a graded Grothendieck ring of a group",
+        [ IsElementOfGradedGrothendieckRingOfGroupRep ],
+        
+  function( chi )
+    local psi;
+    
+    psi := EvalRingElement( chi );
+    
+    psi := List( psi, a -> [ ForgetGroupAction( a[1] ), a[2] ] );
+    
+    if HasIsEquiDegree( chi ) and IsEquiDegree( chi ) then
+        return ElementOfGradedRing( psi, IsEquiDegree );
+    fi;
+    
+    return ElementOfGradedRing( psi );
+    
+end );
+
+##
 InstallMethod( Dimension,
         "for elements of a graded Grothendieck ring of a group",
         [ IsElementOfGradedGrothendieckRingOfGroupRep ],
@@ -151,6 +184,53 @@ InstallMethod( DualOfBaseSpace,
   function( chi )
     
     return DualCharacter( BaseSpace( chi ) );
+    
+end );
+
+##
+InstallMethod( ForgetGroupAction,
+        "for elements of a graded relative Grothendieck ring of a group",
+        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
+        
+  function( chi )
+    
+    return ElementOfGradedRelativeRing(
+                   ForgetGroupAction( HomogeneousParts( chi ) ),
+                   ForgetGroupAction( BaseSpace( chi ) ) );
+    
+end );
+
+##
+InstallMethod( ForgetGroupAction,
+        "for elements of a graded relative Grothendieck ring of a group",
+        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep and
+          IsFree and HasSocle ],
+        
+  function( chi )
+    
+    return FreeElementOfGradedRelativeRing(
+                   ForgetGroupAction( Socle( chi ) ),
+                   ForgetGroupAction( BaseSpace( chi ) ) );
+    
+end );
+
+##
+InstallMethod( HilbertPolynomial,
+        "for elements of a graded relative Grothendieck ring of a group",
+        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
+        
+  function( chi )
+    local d, i;
+    
+    chi := ForgetGroupAction( chi );
+    
+    d := Dimension( chi );
+    
+    for i in [ 0 .. d ] do
+        chi := Kernel( FreeCover( chi ), chi );
+    od;
+    
+    return HilbertPolynomial( chi );
     
 end );
 
