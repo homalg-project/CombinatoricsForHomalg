@@ -1,0 +1,35 @@
+    README file for the `CombinatoricsForHomalg' GAP4 package
+        
+To get the newest version of this GAP 4 package download one of the
+archive files
+    CombinatoricsForHomalg-x.x.tar.gz
+    CombinatoricsForHomalg-x.x.zoo
+    CombinatoricsForHomalg-x.x.tar.bz2
+    CombinatoricsForHomalg-x.x.zip
+and unpack it using 
+    gunzip CombinatoricsForHomalg-x.x.tar.gz; tar xvf CombinatoricsForHomalg-x.x.tar
+respectively
+    unzoo -x CombinatoricsForHomalg-x.x.zoo
+and so on.
+
+(Note that if you use a browser like `netscape' for downloading the
+archive file the `gunzip' step above may already be done by the browser,
+although the name of your file may still have the misleading `.gz'
+extension.)
+
+Do this preferably (but not necessarily) inside the `pkg' subdirectory
+of your GAP 4 installation. It creates a subdirectory called `CombinatoricsForHomalg'.
+
+This completes the installation of the package.
+
+Recompiling the documentation is possible by the command `make doc'
+in the CombinatoricsForHomalg directory. But this should not be necessary.
+
+Testing the package is possible by the command `make test'
+in the CombinatoricsForHomalg directory.
+
+E-mail me if there are any questions, remarks, suggestions. Also, I
+would like to hear about applications of this package.
+
+
+Mohamed Barakat, e-mail: barakat@mathematik.uni-kl.de

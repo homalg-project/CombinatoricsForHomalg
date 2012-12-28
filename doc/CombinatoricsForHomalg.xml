@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Book SYSTEM "gapdoc.dtd">
+
+<!--
+
+  CombinatoricsForHomalg.xml          CombinatoricsForHomalg package documentation
+
+  Copyright (C) 2012, Mohamed Barakat
+
+-->
+
+<Book Name="CombinatoricsForHomalg">
+
+<TitlePage>
+  <Title>GAP 4 Package <Package>CombinatoricsForHomalg</Package></Title>
+  <Subtitle>CombinatoricsForHomalg --- Combinatorics for the homalg project</Subtitle>
+  <Version>
+    Version <#Include SYSTEM "../VERSION">
+  </Version>
+  <Author>Mohamed Barakat
+  <Address>
+    Lehrstuhl B für Mathematik,
+    RWTH Aachen,
+    Templergraben 64,
+    52056 Aachen,
+    Germany
+  </Address>
+  <Email>mohamed.barakat@rwth-aachen.de</Email>
+  <Homepage>http://wwwb.math.rwth-aachen.de/&tilde;barakat</Homepage>
+  </Author>
+  <Date>December 2012</Date>
+  
+  <Copyright>
+    &copyright; 2012 by Mohamed Barakat<P/>
+    
+    This package may be distributed under the terms and conditions of the
+    GNU Public License Version 2.
+  </Copyright>
+  
+</TitlePage>
+
+<!--  TableOfContents  . . . . . .  generate a table of contents   -->
+<TableOfContents/>
+
+<!--  The only chapter of the book  --> 
+<Body>
+<#Include SYSTEM "intro.xml">
+<#Include SYSTEM "install.xml">
+<#Include SYSTEM "examples.xml">
+</Body>
+
+<Bibliography Databases="CombinatoricsForHomalg"/>
+
+<!--  And finally an index as well   -->
+<TheIndex/>
+
+</Book>
