@@ -16,3 +16,5 @@ LoadPackage( "CombinatoricsForHomalg" );
 
 T0 := FreeElementOfGradedRelativeGrothendieckRingOfGroup( chiT0, chiV );
 T1 := FreeElementOfGradedRelativeGrothendieckRingOfGroup( chiT1, chiV );
+
+K_1 := Kernel( T0, T1 );

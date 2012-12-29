@@ -12,9 +12,9 @@ chiT0 := [ [ IrrG[6], -2 ] ];
 
 chiT1 := [ [ IrrG[18], 0 ] ];
 
-M := NormalSubgroups( G );
+N := NormalSubgroups( G );
 
-H := M[5];
+H := N[5];
 
 StructureDescription( H );
 
@@ -28,5 +28,10 @@ psiT1 := [ [ RestrictedClassFunction( IrrG[18], H ), 0 ] ];
 
 LoadPackage( "CombinatoricsForHomalg" );
 
-T0 := FreeElementOfGradedRelativeGrothendieckRingOfGroup( psiT0, psiV );
-T1 := FreeElementOfGradedRelativeGrothendieckRingOfGroup( psiT1, psiV );
+T0 := FreeElementOfGradedRelativeGrothendieckRingOfGroup( chiT0, chiV );
+T1 := FreeElementOfGradedRelativeGrothendieckRingOfGroup( chiT1, chiV );
+
+S0 := FreeElementOfGradedRelativeGrothendieckRingOfGroup( psiT0, psiV );
+S1 := FreeElementOfGradedRelativeGrothendieckRingOfGroup( psiT1, psiV );
+
+K_1 := Kernel( T0, T1 );

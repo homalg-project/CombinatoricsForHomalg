@@ -8,3 +8,5 @@ LoadPackage( "CombinatoricsForHomalg" );
 
 T0 := FreeElementOfGradedRelativeRing( chiT0, chiV );
 T1 := FreeElementOfGradedRelativeRing( chiT1, chiV );
+
+K_1 := Kernel( T0, T1 );

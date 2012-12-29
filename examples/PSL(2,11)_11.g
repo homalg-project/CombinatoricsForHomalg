@@ -14,8 +14,7 @@ chiT1 := [ [ irr[6], -2 ] ];
 
 LoadPackage( "CombinatoricsForHomalg" );
 
-#T_1 := GradedEGModule( chiV, chiT_1 );
-#T0 := GradedEGModule( chiV, chiT0 );
-
 T0 := FreeElementOfGradedRelativeGrothendieckRingOfGroup( chiT0, chiV );
 T1 := FreeElementOfGradedRelativeGrothendieckRingOfGroup( chiT1, chiV );
+
+K_1 := Kernel( T0, T1 );
