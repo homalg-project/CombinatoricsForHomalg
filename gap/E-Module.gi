@@ -869,12 +869,10 @@ InstallMethod( Name,
     
     name := "";
     
-    if coeffs[1][1] = -1 and coeffs[1][2] <> 0 then
+    if coeffs[1][2] = 0 then
+        Append( name, String( coeffs[1][1] ) );
+    elif coeffs[1][1] = -1 then
         Append( name, "-" );
-    elif coeffs[1][1] = -1 and coeffs[1][2] = 0 then
-        Append( name, "-1" );
-    elif coeffs[1][1] = 1 and coeffs[1][2] = 0 then
-        Append( name, "1" );
     elif coeffs[1][1] <> 1 then
         Append( name, Concatenation( String( coeffs[1][1] ), "*" ) );
     fi;
@@ -889,14 +887,16 @@ InstallMethod( Name,
     
     for i in [ 2 .. l ] do
         
-        if coeffs[i][1] = 1 then
+        ## the only difference to the first summand case
+        if coeffs[i][1] > 0 then
             Append( name, "+" );
+        fi;
+        
+        if coeffs[i][2] = 0 then
+            Append( name, String( coeffs[i][1] ) );
         elif coeffs[i][1] = -1 then
             Append( name, "-" );
-        elif coeffs[i][1] > 0 then
-            Append( name,
-                    Concatenation( "+", String( coeffs[i][1] ), "*" ) );
-        elif coeffs[i][1] < 0 then
+        elif coeffs[i][1] <> 1 then
             Append( name,
                     Concatenation( String( coeffs[i][1] ), "*" ) );
         fi;
