@@ -377,6 +377,20 @@ InstallMethod( InjectiveHull,
         
   IdFunc );
 
+##
+InstallMethod( InjectiveProjectiveSaturation,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep  ],
+        
+  function( chi )
+    local psi;
+    
+    psi := ProjectiveCover( chi ) - chi;
+    
+    return InjectiveHull( psi ) - psi;
+    
+end );
+
 ####################################
 #
 # methods for operations:
