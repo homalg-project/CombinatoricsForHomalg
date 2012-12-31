@@ -391,6 +391,20 @@ InstallMethod( InjectiveProjectiveSaturation,
     
 end );
 
+##
+InstallMethod( ProjectiveInjectiveSaturation,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep  ],
+        
+  function( chi )
+    local psi;
+    
+    psi := InjectiveHull( chi ) - chi;
+    
+    return ProjectiveCover( psi ) - psi;
+    
+end );
+
 ####################################
 #
 # methods for operations:

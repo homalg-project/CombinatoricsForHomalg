@@ -142,6 +142,13 @@ DeclareAttributeWithDocumentation( "InjectiveProjectiveSaturation",
         [ "EG-Modules", "Methods_for_all_objects" ]
         );
 
+DeclareAttributeWithDocumentation( "ProjectiveInjectiveSaturation",
+        IsElementOfGrothendieckGroup,
+        "Returns the injective hull of the injective syzygy of a Grothendieck ring element.",
+        "a graded Grothendieck ring element",
+        [ "EG-Modules", "Methods_for_all_objects" ]
+        );
+
 DeclareAttributeWithDocumentation( "HilbertPolynomial",
         IsElementOfGrothendieckGroup,
         "Returns the Hilbert polynomial.",
