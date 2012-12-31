@@ -28,7 +28,7 @@ Subtitle := "CombinatoricsForHomalg - CombinatoricsForHomalg constructions for h
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
 Version := Maximum( [
-  "2012.12.27", ## Mohamed's version
+  "2012.12.30", ## Mohamed's version
 ## this line prevents merge conflicts
   "2012.09.19", ## ???' version
 ] ),

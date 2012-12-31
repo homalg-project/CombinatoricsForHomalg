@@ -163,6 +163,35 @@ InstallMethod( TipOfModule,
 end );
 
 ##
+InstallMethod( BottomOfModule,
+        "for elements of a graded ring",
+        [ IsElementOfGradedRingRep ],
+        
+  function( chi )
+    local coeffs;
+    
+    if IsZero( chi ) then
+        return chi;
+    fi;
+    
+    coeffs := EvalRingElement( chi );
+    
+    return chi!.ElementOfGradedRing( [ coeffs[1] ] );
+    
+end );
+
+##
+InstallMethod( BottomOfModule,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep ],
+        
+  function( chi )
+    
+    return BottomOfModule( HomogeneousParts( chi ) );
+    
+end );
+
+##
 InstallMethod( ExteriorPowers,
         "for elements of a graded ring",
         [ IsElementOfGradedRingRep and IsEquiDegree ],
@@ -288,6 +317,60 @@ end );
 
 ##
 InstallMethod( ProjectiveCover,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep and
+          IsFree and HasSocle ],
+        
+  IdFunc );
+
+##
+InstallMethod( InjectiveHullOfBottom,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep ],
+        
+  function( chi )
+    local chiV, bottom;
+    
+    chiV := BaseSpace( chi );
+    
+    bottom := BottomOfModule( chi );
+    
+    return chi!.FreeElementOfGradedRelativeRing( bottom, chiV );
+    
+end );
+
+##
+InstallMethod( InjectiveHull,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep ],
+        
+  function( chi )
+    local injective_hull_of_bottom, injective;
+    
+    chi := PositivePart( chi );
+    
+    injective_hull_of_bottom := InjectiveHullOfBottom( chi );
+    
+    chi := PositivePart( chi - injective_hull_of_bottom );
+    
+    injective := injective_hull_of_bottom;
+    
+    while not IsZero( chi ) do
+        
+        injective_hull_of_bottom := InjectiveHullOfBottom( chi );
+        
+        chi := PositivePart( chi - injective_hull_of_bottom );
+        
+        injective := injective_hull_of_bottom + injective;
+        
+    od;
+    
+    return injective;
+    
+end );
+
+##
+InstallMethod( InjectiveHull,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep and
           IsFree and HasSocle ],

@@ -100,6 +100,13 @@ DeclareAttributeWithDocumentation( "TipOfModule",
         [ "Characters", "Methods_for_all_objects" ]
         );
 
+DeclareAttributeWithDocumentation( "BottomOfModule",
+        IsElementOfGrothendieckGroup,
+        "Returns the head of a graded character.",
+        "a graded Grothendieck group element",
+        [ "Characters", "Methods_for_all_objects" ]
+        );
+
 DeclareAttributeWithDocumentation( "ProjectiveCoverOfTip",
         IsElementOfGrothendieckGroup,
         "Returns the projective cover of a given tip.",
@@ -110,6 +117,20 @@ DeclareAttributeWithDocumentation( "ProjectiveCoverOfTip",
 DeclareAttributeWithDocumentation( "ProjectiveCover",
         IsElementOfGrothendieckGroup,
         "Returns the projective cover of a Grothendieck ring element.",
+        "a graded Grothendieck ring element",
+        [ "EG-Modules", "Methods_for_all_objects" ]
+        );
+
+DeclareAttributeWithDocumentation( "InjectiveHullOfBottom",
+        IsElementOfGrothendieckGroup,
+        "Returns the injective hull of a given bottom.",
+        "a graded Grothendieck ring element",
+        [ "Characters", "Methods_for_all_objects" ]
+        );
+
+DeclareAttributeWithDocumentation( "InjectiveHull",
+        IsElementOfGrothendieckGroup,
+        "Returns the injective hull of a Grothendieck ring element.",
         "a graded Grothendieck ring element",
         [ "EG-Modules", "Methods_for_all_objects" ]
         );
