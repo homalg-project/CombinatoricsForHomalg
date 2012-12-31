@@ -100,16 +100,16 @@ DeclareAttributeWithDocumentation( "TipOfModule",
         [ "Characters", "Methods_for_all_objects" ]
         );
 
-DeclareAttributeWithDocumentation( "FreeCoverOfTip",
+DeclareAttributeWithDocumentation( "ProjectiveCoverOfTip",
         IsElementOfGrothendieckGroup,
-        "Returns the free cover of a given tip.",
+        "Returns the projective cover of a given tip.",
         "a graded Grothendieck ring element",
         [ "Characters", "Methods_for_all_objects" ]
         );
 
-DeclareAttributeWithDocumentation( "FreeCover",
+DeclareAttributeWithDocumentation( "ProjectiveCover",
         IsElementOfGrothendieckGroup,
-        "Returns the free cover of a Grothendieck ring element.",
+        "Returns the projective cover of a Grothendieck ring element.",
         "a graded Grothendieck ring element",
         [ "EG-Modules", "Methods_for_all_objects" ]
         );

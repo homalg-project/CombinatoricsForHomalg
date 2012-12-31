@@ -227,7 +227,7 @@ InstallMethod( HilbertPolynomial,
     d := Dimension( chi );
     
     for i in [ 0 .. d ] do
-        chi := Kernel( FreeCover( chi ), chi );
+        chi := Kernel( ProjectiveCover( chi ), chi );
     od;
     
     return HilbertPolynomial( chi );

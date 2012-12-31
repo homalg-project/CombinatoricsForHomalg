@@ -51,7 +51,7 @@ InstallMethod( IsEquiDegree,
         
   function( chi )
     
-    return IsEquiDegree( Socle( FreeCover( chi ) ) );
+    return IsEquiDegree( Socle( ProjectiveCover( chi ) ) );
     
 end );
 
@@ -239,7 +239,7 @@ InstallMethod( DeterminantOfBaseSpace,
 end );
 
 ##
-InstallMethod( FreeCoverOfTip,
+InstallMethod( ProjectiveCoverOfTip,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep ],
         
@@ -257,37 +257,37 @@ InstallMethod( FreeCoverOfTip,
 end );
 
 ##
-InstallMethod( FreeCover,
+InstallMethod( ProjectiveCover,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep ],
         
   function( chi )
-    local free_of_tip, free;
+    local projective_cover_of_tip, projective;
     
     chi := PositivePart( chi );
     
-    free_of_tip := FreeCoverOfTip( chi );
+    projective_cover_of_tip := ProjectiveCoverOfTip( chi );
     
-    chi := PositivePart( chi - free_of_tip );
+    chi := PositivePart( chi - projective_cover_of_tip );
     
-    free := free_of_tip;
+    projective := projective_cover_of_tip;
     
     while not IsZero( chi ) do
         
-        free_of_tip := FreeCoverOfTip( chi );
+        projective_cover_of_tip := ProjectiveCoverOfTip( chi );
         
-        chi := PositivePart( chi - free_of_tip );
+        chi := PositivePart( chi - projective_cover_of_tip );
         
-        free := free_of_tip + free;
+        projective := projective_cover_of_tip + projective;
         
     od;
     
-    return free;
+    return projective;
     
 end );
 
 ##
-InstallMethod( FreeCover,
+InstallMethod( ProjectiveCover,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep and
           IsFree and HasSocle ],
@@ -768,7 +768,7 @@ InstallMethod( HilbertPolynomial,
     
     K_i := chi;
     
-    T_i := FreeCover( K_i );
+    T_i := ProjectiveCover( K_i );
     
     sign := 1;
     
@@ -786,7 +786,7 @@ InstallMethod( HilbertPolynomial,
         
         K_i := Kernel( T_i, K_i );
         
-        T_i := FreeCover( K_i );
+        T_i := ProjectiveCover( K_i );
         
         sign := sign * (-1)^(l - 1);
         
