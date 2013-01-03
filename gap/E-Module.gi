@@ -559,7 +559,7 @@ InstallMethod( Zero,
         
   function( a )
     
-    return ElementOfGradedRing(
+    return a!.ElementOfGradedRing(
                    [ ], a!.ring, IsZero );
     
 end );
@@ -572,7 +572,7 @@ InstallMethod( \+,
         
   function( a, b )
     
-    return ElementOfGradedRing(
+    return a!.ElementOfGradedRing(
                    Concatenation( EvalRingElement( a ), EvalRingElement( b ) ) );
     
 end );
@@ -584,7 +584,7 @@ InstallMethod( AdditiveInverse,
         
   function( a )
     
-    return ElementOfGradedRing(
+    return a!.ElementOfGradedRing(
                    List( EvalRingElement( a ), i -> [ -i[1], i[2] ] ) );
     
 end );
@@ -622,13 +622,12 @@ InstallMethod( \*,
   function( a, b )
     local product;
     
-    a := EvalRingElement( a );
-    b := EvalRingElement( b );
-    
-    product := List( a, chi -> List( b, psi -> [ chi[1] * psi[1], chi[2] + psi[2] ] ) );
+    product := List( EvalRingElement( a ),
+                     chi -> List( EvalRingElement( b ),
+                             psi -> [ chi[1] * psi[1], chi[2] + psi[2] ] ) );
     product := Concatenation( product );
     
-    return ElementOfGradedRing( product );
+    return a!.ElementOfGradedRing( product );
     
 end );
 
@@ -744,11 +743,12 @@ InstallMethod( Zero,
         [ IsElementOfGradedRelativeRingRep ],
         
   function( chi )
+    local chiV;
     
-    chi := BaseSpace( chi );
+    chiV := BaseSpace( chi );
     
-    return FreeElementOfGradedRelativeRing(
-                   Zero( chi ), chi, IsZero );
+    return chi!.FreeElementOfGradedRelativeRing(
+                   Zero( chiV ), chiV, IsZero );
     
 end );
 
@@ -767,7 +767,7 @@ InstallMethod( \+,
         Error( "different base\n" );
     fi;
     
-    return ElementOfGradedRelativeRing(
+    return chi!.ElementOfGradedRelativeRing(
                    HomogeneousParts( chi ) + HomogeneousParts( psi ),
                    chiV );
     
@@ -790,7 +790,7 @@ InstallMethod( \+,
         Error( "different base\n" );
     fi;
     
-    return FreeElementOfGradedRelativeRing(
+    return chi!.FreeElementOfGradedRelativeRing(
                    Socle( chi ) + Socle( psi ),
                    chiV );
     
@@ -803,7 +803,7 @@ InstallMethod( AdditiveInverse,
         
   function( chi )
     
-    return ElementOfGradedRelativeRing(
+    return chi!.ElementOfGradedRelativeRing(
                    -HomogeneousParts( chi ),
                    BaseSpace( chi ) );
     
@@ -817,7 +817,7 @@ InstallMethod( AdditiveInverse,
         
   function( chi )
     
-    return FreeElementOfGradedRelativeRing(
+    return chi!.FreeElementOfGradedRelativeRing(
                    -Socle( chi ),
                    BaseSpace( chi ) );
     
@@ -832,7 +832,7 @@ InstallMethod( One,
     
     chi := BaseSpace( chi );
     
-    return FreeElementOfGradedRelativeRing(
+    return chi!.FreeElementOfGradedRelativeRing(
                    One( chi ), chi, IsOne );
     
 end );

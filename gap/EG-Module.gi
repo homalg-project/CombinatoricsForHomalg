@@ -324,18 +324,6 @@ InstallMethod( ExteriorPower,
     
 end );
 
-##
-InstallMethod( Kernel,
-        "for elements of a graded relative Grothendieck ring of a group",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep,
-          IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
-        
-  function( chi, psi )
-    
-    return PositivePart( chi - psi );
-    
-end );
-
 ####################################
 #
 # constructors:
@@ -573,55 +561,6 @@ InstallGlobalFunction( ElementOfGradedGrothendieckRingOfGroup,
 end );
 
 ##
-InstallMethod( \=,
-        "for two elements of a graded Grothendieck ring of a group",
-        [ IsElementOfGradedGrothendieckRingOfGroupRep,
-          IsElementOfGradedGrothendieckRingOfGroupRep ],
-        
-  function( a, b )
-    
-    return EvalRingElement( a ) = EvalRingElement( b );
-    
-end );
-
-##
-InstallMethod( Zero,
-        "for elements of a graded Grothendieck ring of a group",
-        [ IsElementOfGradedGrothendieckRingOfGroupRep ],
-        
-  function( a )
-    
-    return ElementOfGradedGrothendieckRingOfGroup(
-                   [ ], a!.ring, IsZero );
-    
-end );
-
-##
-InstallMethod( \+,
-        "for two elements of a graded Grothendieck ring of a group",
-        [ IsElementOfGradedGrothendieckRingOfGroupRep,
-          IsElementOfGradedGrothendieckRingOfGroupRep ],
-        
-  function( a, b )
-    
-    return ElementOfGradedGrothendieckRingOfGroup(
-                   Concatenation( EvalRingElement( a ), EvalRingElement( b ) ) );
-    
-end );
-
-##
-InstallMethod( AdditiveInverse,
-        "for elements of a graded Grothendieck ring of a group",
-        [ IsElementOfGradedGrothendieckRingOfGroupRep ],
-        
-  function( a )
-    
-    return ElementOfGradedGrothendieckRingOfGroup(
-                   List( EvalRingElement( a ), i -> [ -i[1], i[2] ] ) );
-    
-end );
-
-##
 InstallMethod( One,
         "for elements of a graded Grothendieck ring of a group",
         [ IsElementOfGradedGrothendieckRingOfGroupRep ],
@@ -630,37 +569,6 @@ InstallMethod( One,
     
     return ElementOfGradedGrothendieckRingOfGroup(
                    [ [ TrivialCharacter( UnderlyingCharacterTable( a ) ), 0 ] ], a!.ring, IsOne );
-    
-end );
-
-##
-InstallMethod( POW,
-        "for an element of a graded Grothendieck ring of a group and an integer",
-        [ IsElementOfGradedGrothendieckRingOfGroupRep,
-          IsInt and IsZero ],
-        
-  function( a, e )
-    
-    return One( a );
-    
-end );
-
-##
-InstallMethod( \*,
-        "for two elements of a graded Grothendieck ring of a group",
-        [ IsElementOfGradedGrothendieckRingOfGroupRep,
-          IsElementOfGradedGrothendieckRingOfGroupRep ],
-        
-  function( a, b )
-    local product;
-    
-    a := EvalRingElement( a );
-    b := EvalRingElement( b );
-    
-    product := List( a, chi -> List( b, psi -> [ chi[1] * psi[1], chi[2] + psi[2] ] ) );
-    product := Concatenation( product );
-    
-    return ElementOfGradedGrothendieckRingOfGroup( product );
     
 end );
 
@@ -746,157 +654,6 @@ InstallGlobalFunction( FreeElementOfGradedRelativeGrothendieckRingOfGroup,
     Add( arg, IsFree );
     
     return CallFuncList( ElementOfGradedRelativeGrothendieckRingOfGroup, arg );
-    
-end );
-
-##
-InstallMethod( \=,
-        "for two elements of a graded relative Grothendieck ring of a group",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep,
-          IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
-        
-  function( chi, psi )
-    
-    return BaseSpace( chi ) = BaseSpace( psi ) and
-           HomogeneousParts( chi ) = HomogeneousParts( psi );
-    
-end );
-
-##
-InstallMethod( \=,
-        "for two elements of a graded relative Grothendieck ring of a group",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep and
-          IsFree and HasSocle,
-          IsElementOfGradedRelativeGrothendieckRingOfGroupRep and
-          IsFree and HasSocle ],
-        
-  function( chi, psi )
-    
-    return BaseSpace( chi ) = BaseSpace( psi ) and
-           Socle( chi ) = Socle( psi );
-    
-end );
-
-##
-InstallMethod( Zero,
-        "for elements of a graded relative Grothendieck ring of a group",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
-        
-  function( chi )
-    
-    chi := BaseSpace( chi );
-    
-    return FreeElementOfGradedRelativeGrothendieckRingOfGroup(
-                   Zero( chi ), chi, IsZero );
-    
-end );
-
-##
-InstallMethod( \+,
-        "for two elements of a graded relative Grothendieck ring of a group",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep,
-          IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
-        
-  function( chi, psi )
-    local chiV;
-    
-    chiV := BaseSpace( chi );
-    
-    if chiV <> BaseSpace( psi ) then
-        Error( "different base\n" );
-    fi;
-    
-    return ElementOfGradedRelativeGrothendieckRingOfGroup(
-                   HomogeneousParts( chi ) + HomogeneousParts( psi ),
-                   chiV );
-    
-end );
-
-##
-InstallMethod( \+,
-        "for two elements of a graded relative Grothendieck ring of a group",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep and
-          IsFree and HasSocle,
-          IsElementOfGradedRelativeGrothendieckRingOfGroupRep and
-          IsFree and HasSocle ],
-        
-  function( chi, psi )
-    local chiV;
-    
-    chiV := BaseSpace( chi );
-    
-    if chiV <> BaseSpace( psi ) then
-        Error( "different base\n" );
-    fi;
-    
-    return FreeElementOfGradedRelativeGrothendieckRingOfGroup(
-                   Socle( chi ) + Socle( psi ),
-                   chiV );
-    
-end );
-
-##
-InstallMethod( AdditiveInverse,
-        "for elements of a graded relative Grothendieck ring of a group",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
-        
-  function( chi )
-    
-    return ElementOfGradedRelativeGrothendieckRingOfGroup(
-                   -HomogeneousParts( chi ),
-                   BaseSpace( chi ) );
-    
-end );
-
-##
-InstallMethod( AdditiveInverse,
-        "for elements of a graded relative Grothendieck ring of a group",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep and
-          IsFree and HasSocle ],
-        
-  function( chi )
-    
-    return FreeElementOfGradedRelativeGrothendieckRingOfGroup(
-                   -Socle( chi ),
-                   BaseSpace( chi ) );
-    
-end );
-
-##
-InstallMethod( One,
-        "for elements of a graded relative Grothendieck ring of a group",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
-        
-  function( chi )
-    
-    chi := BaseSpace( chi );
-    
-    return FreeElementOfGradedRelativeGrothendieckRingOfGroup(
-                   One( chi ), chi, IsOne );
-    
-end );
-
-##
-InstallMethod( POW,
-        "for an element of a graded relative Grothendieck ring of a group and an integer",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep,
-          IsInt and IsZero ],
-        
-  function( a, e )
-    
-    return One( a );
-    
-end );
-
-##
-InstallMethod( \*,
-        "for two elements of a graded relative Grothendieck ring of a group",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep,
-          IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
-        
-  function( a, b )
-    
-    Error( "undefined\n" );
     
 end );
 
