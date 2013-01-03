@@ -701,7 +701,7 @@ InstallGlobalFunction( ElementOfGradedRelativeGrothendieckRingOfGroup,
               ElementOfGradedRelativeRing :=
               ElementOfGradedRelativeGrothendieckRingOfGroup,
               FreeElementOfGradedRelativeRing :=
-              FreeElementOfGradedRelativeGrothendieckRingOfGroup);
+              FreeElementOfGradedRelativeGrothendieckRingOfGroup );
     
     if not IsElementOfGradedGrothendieckRingOfGroupRep( fiber ) then
         fiber := ElementOfGradedGrothendieckRingOfGroup( fiber );

@@ -666,7 +666,7 @@ InstallGlobalFunction( ElementOfGradedRelativeRing,
               ElementOfGradedRelativeRing :=
               ElementOfGradedRelativeRing,
               FreeElementOfGradedRelativeRing :=
-              FreeElementOfGradedRelativeRing);
+              FreeElementOfGradedRelativeRing );
     
     if not IsElementOfGradedRingRep( fiber ) then
         fiber := ElementOfGradedRing( fiber );
