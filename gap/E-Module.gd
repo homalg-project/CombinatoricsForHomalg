@@ -195,6 +195,14 @@ DeclareOperationWithDocumentation( "ExteriorPower",
         [ "Characters", "Methods_for_all_objects" ]
         );
 
+DeclareOperationWithDocumentation( "Cokernel",
+        [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ],
+        "Returns the cokernel of the unique map from <A>chi</A> to <A>psi</A>.",
+        "a graded Grothendieck ring element",
+        "chi, psi",
+        [ "Characters", "Methods_for_all_objects" ]
+        );
+
 DeclareOperationWithDocumentation( "Kernel",
         [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ],
         "Returns the kernel of the unique map from <A>chi</A> to <A>psi</A>.",

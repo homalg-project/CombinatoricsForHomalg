@@ -439,6 +439,18 @@ InstallMethod( ExteriorPower,
 end );
 
 ##
+InstallMethod( Cokernel,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep,
+          IsElementOfGradedRelativeRingRep ],
+        
+  function( chi, psi )
+    
+    return PositivePart( psi - chi );
+    
+end );
+
+##
 InstallMethod( Kernel,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep,
