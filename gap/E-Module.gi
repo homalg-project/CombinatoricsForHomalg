@@ -462,6 +462,26 @@ InstallMethod( Kernel,
     
 end );
 
+##
+InstallMethod( SyzygyObject,
+        "for an integer and an element of a graded relative ring",
+        [ IsInt, IsElementOfGradedRelativeRingRep ],
+        
+  function( i, chi )
+    local j, P;
+    
+    for j in [ 1 .. i ] do
+        
+        P := ProjectiveCover( chi );
+        
+        chi := Kernel( P, chi );
+        
+    od;
+    
+    return chi;
+    
+end );
+
 ####################################
 #
 # constructors:
