@@ -28,7 +28,7 @@ Subtitle := "CombinatoricsForHomalg - CombinatoricsForHomalg constructions for h
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
 Version := Maximum( [
-  "2013.01.04", ## Mohamed's version
+  "2013.01.05", ## Mohamed's version
 ## this line prevents merge conflicts
   "2012.09.19", ## ???' version
 ] ),
@@ -251,7 +251,7 @@ Dependencies := rec(
   # without these, the package will not load
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2012.10.26" ],
-                   [ "Modules", ">= 2012.10.27" ],
+                   [ "Modules", ">= 2013.01.05" ],
                    [ "GAPDoc", ">= 1.1" ] ],
   # without these the package will issue a warning while loading
   # SuggestedOtherPackages := [],

@@ -899,7 +899,7 @@ InstallMethod( HilbertPolynomial,
         [ IsElementOfGradedRelativeRingRep ],
         
   function( chi )
-    local t, HP, K_i, T_i, sign, socle, l, socles, d;
+    local t, HP, K_i, T_i, sign, socle, l, socles, d, base_points;
     
     t := VariableForHilbertPolynomial( );
     
@@ -943,7 +943,13 @@ InstallMethod( HilbertPolynomial,
         
     od;
     
-    HP := InterpolatedPolynomial( Integers, List( socles, a -> a[2] ), List( socles, a -> a[1] ) );
+    base_points := List( socles, a -> a[2] );
+    
+    if DuplicateFreeList( base_points ) <> base_points then
+        Error( "the table in this region is not thin and hence the base points of the Lagrange interpolation are not distinct\n" );
+    fi;
+    
+    HP := InterpolatedPolynomial( Integers, base_points, List( socles, a -> a[1] ) );
     
     HP := SignInt( LeadingCoefficient( HP ) ) * HP;
     
