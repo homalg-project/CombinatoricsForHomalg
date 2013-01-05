@@ -190,7 +190,7 @@ DeclareGlobalFunctionWithDocumentation( "VariableForGrothendieckHilbertSeries",
 DeclareOperationWithDocumentation( "ExteriorPower",
         [ IsElementOfGrothendieckGroup, IsInt ],
         "Returns the <A>e</A>-th exterior powers of the <A>chi</A>.",
-        "a graded Grothendieck ring element",
+        "a graded ring element",
         "chi, e",
         [ "Characters", "Methods_for_all_objects" ]
         );
@@ -198,7 +198,7 @@ DeclareOperationWithDocumentation( "ExteriorPower",
 DeclareOperationWithDocumentation( "Cokernel",
         [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ],
         "Returns the cokernel of the unique map from <A>chi</A> to <A>psi</A>.",
-        "a graded Grothendieck ring element",
+        "a graded relative ring element",
         "chi, psi",
         [ "Characters", "Methods_for_all_objects" ]
         );
@@ -206,7 +206,7 @@ DeclareOperationWithDocumentation( "Cokernel",
 DeclareOperationWithDocumentation( "Kernel",
         [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ],
         "Returns the kernel of the unique map from <A>chi</A> to <A>psi</A>.",
-        "a graded Grothendieck ring element",
+        "a graded relative ring element",
         "chi, psi",
         [ "Characters", "Methods_for_all_objects" ]
         );
