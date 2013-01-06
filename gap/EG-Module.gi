@@ -220,17 +220,8 @@ InstallMethod( HilbertPolynomial,
         [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
         
   function( chi )
-    local d, i;
     
-    chi := ForgetGroupAction( chi );
-    
-    d := Dimension( chi );
-    
-    for i in [ 0 .. d ] do
-        chi := Kernel( ProjectiveCover( chi ), chi );
-    od;
-    
-    return HilbertPolynomial( chi );
+    return HilbertPolynomial( ForgetGroupAction( chi ) );
     
 end );
 

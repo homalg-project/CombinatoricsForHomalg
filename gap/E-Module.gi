@@ -894,19 +894,15 @@ InstallMethod( \*,
 end );
 
 ##
-InstallMethod( HilbertPolynomial,
+InstallMethod( ValuesOfBettiTable,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep ],
         
   function( chi )
-    local t, HP, K_i, T_i, sign, socle, l, socles, d, base_points;
-    
-    t := VariableForHilbertPolynomial( );
+    local K_i, T_i, sign, socle, l, socles, d, twist_max, twist_min;
     
     if IsZero( chi ) then
-        HP := 0 * t;
-        HP!.GradedModule := chi;
-        return HP;
+        return [ ];
     fi;
     
     K_i := chi;
@@ -925,7 +921,13 @@ InstallMethod( HilbertPolynomial,
     
     d := Dimension( chi );
     
-    while Length( socles ) < d + 1 do
+    twist_max := socle[1][2];
+    
+    ## the -d is enough for the interpolation
+    ## and the -1 to compare with ambient dimension, see below
+    twist_min := twist_max - d - 1;
+    
+    while socle[Length( socle )][2] > twist_min do
         
         K_i := Kernel( T_i, K_i );
         
@@ -943,20 +945,44 @@ InstallMethod( HilbertPolynomial,
         
     od;
     
-    base_points := List( socles, a -> a[2] );
+    ## extract the table in the window [ twist_min .. twist_max ]
+    return Filtered( socles, a -> a[2] in [ twist_min .. twist_max ] );
     
-    if DuplicateFreeList( base_points ) <> base_points then
-        Error( "the table in this region is not thin and hence the base points of the Lagrange interpolation are not distinct\n" );
+end );
+
+##
+InstallMethod( HilbertPolynomial,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep ],
+        
+  function( chi )
+    local t, HP, socles, base_points, euler;
+    
+    t := VariableForHilbertPolynomial( );
+    
+    if IsZero( chi ) then
+        HP := 0 * t;
+        HP!.GradedModule := chi;
+        return HP;
     fi;
     
-    HP := InterpolatedPolynomial( Integers, base_points, List( socles, a -> a[1] ) );
+    socles := ValuesOfBettiTable( chi );
+    
+    base_points := List( socles, a -> a[2] );
+    
+    base_points := DuplicateFreeList( base_points );
+    
+    euler := List( base_points, a -> Sum( Filtered( socles, b -> b[2] = a ), c -> c[1] ) );
+    
+    HP := InterpolatedPolynomial( Integers, base_points, euler );
     
     HP := SignInt( LeadingCoefficient( HP ) ) * HP;
     
     HP := Value( HP, t );
     
-    if Degree( HP ) > d then
-        Error( "the degree of the Hilbert polynomial is bigger than the ambient dimension\n" );
+    if Degree( HP ) > Dimension( chi ) then
+        Error( "the degree of the Hilbert polynomial is ", Degree( HP ),
+               " which is bigger than the ambient dimension ", Dimension( chi ), "\n" );
     fi;
     
     HP!.GradedModule := chi;

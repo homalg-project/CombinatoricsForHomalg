@@ -149,6 +149,14 @@ DeclareAttributeWithDocumentation( "ProjectiveInjectiveSaturation",
         [ "EG-Modules", "Methods_for_all_objects" ]
         );
 
+DeclareAttributeWithDocumentation( "ValuesOfBettiTable",
+        IsElementOfGrothendieckGroup,
+        "Returns the values of the Betti table in a certain range.",
+        "a list",
+        "chi",
+        [ "Characters", "Methods_for_all_objects" ]
+        );
+
 DeclareAttributeWithDocumentation( "HilbertPolynomial",
         IsElementOfGrothendieckGroup,
         "Returns the Hilbert polynomial.",
