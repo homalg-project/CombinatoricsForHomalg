@@ -899,7 +899,7 @@ InstallMethod( ValuesOfBettiTable,
         [ IsElementOfGradedRelativeRingRep ],
         
   function( chi )
-    local K_i, T_i, sign, socle, l, socles, d, twist_max, twist_min;
+    local K_i, T_i, sign, socle, socles, d, twist_max, twist_min;
     
     if IsZero( chi ) then
         return [ ];
@@ -913,9 +913,7 @@ InstallMethod( ValuesOfBettiTable,
     
     socle := EvalRingElement( Socle( T_i ) );
     
-    l := Length( socle );
-    
-    socle := List( [ 1 .. l ], i -> [ sign * (-1)^(l - i) * socle[i][1], socle[i][2] ] );
+    socle := List( socle, a -> [ sign * (-1)^a[2] * a[1], a[2] ] );
     
     socles := socle;
     
@@ -931,15 +929,17 @@ InstallMethod( ValuesOfBettiTable,
         
         K_i := Kernel( T_i, K_i );
         
+        if IsZero( K_i ) then
+            return [ ];
+        fi;
+        
         T_i := ProjectiveCover( K_i );
         
-        sign := sign * (-1)^(l - 1);
+        sign := -sign;
         
         socle := EvalRingElement( Socle( T_i ) );
         
-        l := Length( socle );
-        
-        socle := List( [ 1 .. l ], i -> [ sign * (-1)^(l - i) * socle[i][1], socle[i][2] ] );
+        socle := List( socle, a -> [ sign * (-1)^a[2] * a[1], a[2] ] );
         
         socles := Concatenation( socle, socles );
         
@@ -960,13 +960,13 @@ InstallMethod( HilbertPolynomial,
     
     t := VariableForHilbertPolynomial( );
     
-    if IsZero( chi ) then
+    socles := ValuesOfBettiTable( chi );
+    
+    if socles = [ ] then
         HP := 0 * t;
         HP!.GradedModule := chi;
         return HP;
     fi;
-    
-    socles := ValuesOfBettiTable( chi );
     
     base_points := List( socles, a -> a[2] );
     
