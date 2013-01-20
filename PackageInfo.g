@@ -28,7 +28,7 @@ Subtitle := "CombinatoricsForHomalg - CombinatoricsForHomalg constructions for h
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
 Version := Maximum( [
-  "2013.01.07", ## Mohamed's version
+  "2013.01.17", ## Mohamed's version
 ## this line prevents merge conflicts
   "2012.09.19", ## ???' version
 ] ),
@@ -283,15 +283,15 @@ AvailabilityTest := function()
 ##  in this file. If you are not happy with it, you can provide a string
 ##  here that is used as a banner. GAP decides when the banner is shown and
 ##  when it is not shown. *optional* (note the ~-syntax in this example)
-BannerString := Concatenation( 
-  "----------------------------------------------------------------\n",
-  "Loading  CombinatoricsForHomalg ", ~.Version, "\n",
-  "by ", ~.Persons[1].FirstNames, " ", ~.Persons[1].LastName,
-        " (", ~.Persons[1].WWWHome, ")\n",
+#BannerString := Concatenation( 
+#  "----------------------------------------------------------------\n",
+#  "Loading  CombinatoricsForHomalg ", ~.Version, "\n",
+#  "by ", ~.Persons[1].FirstNames, " ", ~.Persons[1].LastName,
+#        " (", ~.Persons[1].WWWHome, ")\n",
 #  "   ", ~.Persons[2].FirstNames, " ", ~.Persons[2].LastName,
 #        " (", ~.Persons[2].WWWHome, ")\n",
-  "For help, type: ?CombinatoricsForHomalg package \n",
-  "----------------------------------------------------------------\n" ),
+#  "For help, type: ?CombinatoricsForHomalg package \n",
+#  "----------------------------------------------------------------\n" ),
 
 ##  Suggest here if the package should be *automatically loaded* when GAP is 
 ##  started.  This should usually be 'false'. Say 'true' only if your package 
