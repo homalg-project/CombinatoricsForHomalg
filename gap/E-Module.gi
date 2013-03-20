@@ -470,11 +470,39 @@ InstallMethod( SyzygyObject,
   function( i, chi )
     local j, P;
     
+    if i < 0 then
+        return CosyzygyObject( -i, chi );
+    fi;
+    
     for j in [ 1 .. i ] do
         
         P := ProjectiveCover( chi );
         
         chi := Kernel( P, chi );
+        
+    od;
+    
+    return chi;
+    
+end );
+
+##
+InstallMethod( CosyzygyObject,
+        "for an integer and an element of a graded relative ring",
+        [ IsInt, IsElementOfGradedRelativeRingRep ],
+        
+  function( i, chi )
+    local j, I;
+    
+    if i < 0 then
+        return SyzygyObject( -i, chi );
+    fi;
+    
+    for j in [ 1 .. i ] do
+        
+        I := InjectiveHull( chi );
+        
+        chi := Cokernel( chi, I );
         
     od;
     

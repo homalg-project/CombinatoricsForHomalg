@@ -227,6 +227,14 @@ DeclareOperationWithDocumentation( "SyzygyObject",
         [ "Characters", "Methods_for_all_objects" ]
         );
 
+DeclareOperationWithDocumentation( "CosyzygyObject",
+        [ IsInt, IsElementOfGrothendieckGroup ],
+        "Returns the <A>i</A>-th syzyies object of <A>chi</A>.",
+        "a graded relative ring element",
+        "i, chi",
+        [ "Characters", "Methods_for_all_objects" ]
+        );
+
 # constructors:
 
 DeclareGlobalFunctionWithDocumentation( "ElementOfRing",
