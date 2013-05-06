@@ -71,6 +71,20 @@ DeclareAttributeWithDocumentation( "DualOfBaseSpace",
         "a graded Grothendieck ring element",
         [ "Characters", "Methods_for_all_objects" ]
         );
+        
+DeclareAttributeWithDocumentation( "ChernCharacter",
+        IsElementOfGrothendieckGroup,
+        "Returns the ChernCharacter",
+        "a graded Grothendieck ring element",
+        [ "Characters", "Methods_for_all_objects" ]
+        );
+                
+DeclareAttributeWithDocumentation( "RankOfObject",
+        IsElementOfGrothendieckGroup,
+        "Returns the Rank",
+        "a graded Grothendieck ring element",
+        [ "Characters", "Methods_for_all_objects" ]
+        );        
 
 DeclareAttributeWithDocumentation( "PositivePart",
         IsElementOfGrothendieckGroup,
@@ -235,6 +249,15 @@ DeclareOperationWithDocumentation( "CosyzygyObject",
         [ "Characters", "Methods_for_all_objects" ]
         );
 
+DeclareOperationWithDocumentation( "VerticalShift",
+        [ IsElementOfGrothendieckGroup, IsInt ],
+        "Returns the i-th shift of chi.",
+        "a graded relative ring element",
+        "chi, i",
+        [ "Characters", "Methods_for_all_objects" ]
+        );
+
+        
 # constructors:
 
 DeclareGlobalFunctionWithDocumentation( "ElementOfRing",

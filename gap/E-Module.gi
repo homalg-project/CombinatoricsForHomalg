@@ -915,9 +915,21 @@ InstallMethod( \*,
         [ IsElementOfGradedRelativeRingRep,
           IsElementOfGradedRelativeRingRep ],
         
-  function( a, b )
+#   function( a, b )
+#     
+#     Error( "undefined\n" );
+       function( chi, psi )
+    local chiV;
     
-    Error( "undefined\n" );
+    chiV := BaseSpace( chi );
+    
+    if chiV <> BaseSpace( psi ) then
+        Error( "different base\n" );
+    fi;
+    
+    return chi!.ElementOfGradedRelativeRing(
+                   HomogeneousParts( chi ) * HomogeneousParts( psi ),
+                   chiV );
     
 end );
 
@@ -1044,6 +1056,52 @@ InstallMethod( ChernPolynomial,
     
     return ChernPolynomial( ElementOfGrothendieckGroup( chi ) );
     
+end );
+
+##
+InstallMethod( ChernCharacter,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep ],
+
+  function( chi )
+    local u, d, exp, coeffs;
+    
+    u := VariableForChernCharacter( );
+    
+    d := Dimension( chi );
+    
+    exp := Sum( [ 0 .. d + 1 ], i -> 1/Factorial( i )*u^i );
+    
+    coeffs := EvalRingElement( HomogeneousParts( chi ) );
+    
+    return CreateChernCharacter( 0*u + Sum( coeffs, i -> i[1]*(-1)^i[2]*Value( exp, -i[2]*u ) ) , d );  
+    
+end );
+
+##
+InstallMethod( RankOfObject,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep ],
+        
+  function( chi )
+  
+  return Value( UnderlyingPolynomial( chi ), -1 );
+  
+end );
+
+##
+InstallMethod( VerticalShift,
+        "for elements of a graded relative ring and an integer",
+        [ IsElementOfGradedRelativeRingRep, IsInt ],
+  function( chi, i )
+    local s, d;
+    
+    d := Dimension( chi );
+    
+    s := ElementOfGradedRelativeRing( [ [ 1, i ] ], d + 1 );
+    
+    return chi*s;
+  
 end );
 
 ####################################
