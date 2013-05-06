@@ -30,7 +30,7 @@ Subtitle := "CombinatoricsForHomalg - CombinatoricsForHomalg constructions for h
 Version := Maximum( [
   "2013.03.19", ## Mohamed's version
 ## this line prevents merge conflicts
-  "2012.09.19", ## ???' version
+  "2013.05.05", ## Sebastian's version
 ] ),
 ##  Please adjust also the VERSION file in the package directory when
 ##  changing this.
@@ -136,6 +136,22 @@ Persons := [
                        "Germany" ] ),
     Place         := "Kaiserslautern",
     Institution   := "University of Kaiserslautern"
+  ),
+  rec(
+    LastName      := "Posur",
+    FirstNames    := "Sebastian",
+    IsAuthor      := true,
+    IsMaintainer  := true,
+    Email         := "sebastian.posur@rwth-aachen.de",
+    WWWHome       := "",
+    PostalAddress := Concatenation( [
+                       "Sebastian Posur\n",
+                       "Lehrstuhl B fuer Mathematik, RWTH Aachen\n",
+                       "Templergraben 64\n",
+                       "52062 Aachen\n",
+                       "Germany" ] ),
+    Place         := "Aachen",
+    Institution   := "RWTH Aachen University"
   ),
 # provide such a record for each author and/or maintainer ...
   
