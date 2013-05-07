@@ -225,6 +225,7 @@ InstallMethod( HilbertPolynomial,
     
 end );
 
+
 ####################################
 #
 # methods for operations:
@@ -314,6 +315,24 @@ InstallMethod( ExteriorPower,
     return ElementOfGradedGrothendieckRingOfGroup( chi );
     
 end );
+
+##
+InstallMethod( VerticalShift,
+        "for elements of a graded relative ring and an integer",
+        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep, IsInt ],
+  function( chi, i )
+    local s, d, ct;
+    
+    d := Dimension( chi );
+    
+    ct := UnderlyingCharacterTable( chi );
+
+    s := ElementOfGradedRelativeGrothendieckRingOfGroup( [ [ TrivialCharacter( ct ), i ] ], BaseSpace( chi ) );
+    
+    return chi*s;
+  
+end );
+
 
 ####################################
 #
