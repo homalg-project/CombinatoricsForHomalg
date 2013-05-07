@@ -29,3 +29,9 @@ doc/*.toc
 doc/*.out
 doc/manual.lab
 *.DS_Store
+doc/AutoDocMainFile.xml
+gap/AutoDocEntries.g
+doc/Characters.xml
+doc/CharactersSectionConstructors.xml
+doc/CharactersSectionMethods_for_all_objects.xml
+doc/CharactersSectionMethods_for_characters.xml

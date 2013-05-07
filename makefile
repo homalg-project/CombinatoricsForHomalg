@@ -2,10 +2,11 @@ all: doc test
 
 doc: doc/manual.six
 
-doc/manual.six: makedoc.g maketest.g \
+doc/manual.six: createautodoc.g makedoc.g maketest.g ListOfDocFiles.g \
 		PackageInfo.g VERSION \
 		doc/CombinatoricsForHomalg.bib doc/*.xml \
 		gap/*.gd gap/*.gi examples/*.g
+		gap createautodoc.g
 	        gap makedoc.g
 
 clean:
@@ -15,7 +16,7 @@ test:	doc
 	gap maketest.g
 
 archive: test
-	(mkdir -p ../tar; cd ..; tar czvf tar/CombinatoricsForHomalg.tar.gz --exclude ".DS_Store" --exclude "*~" CombinatoricsForHomalg/doc/*.* CombinatoricsForHomalg/doc/clean CombinatoricsForHomalg/gap/*.{gi,gd} CombinatoricsForHomalg/{CHANGES,PackageInfo.g,README,VERSION,init.g,read.g,makedoc.g,makefile,maketest.g} CombinatoricsForHomalg/examples/*.g)
+	(mkdir -p ../tar; cd ..; tar czvf tar/CombinatoricsForHomalg.tar.gz --exclude ".DS_Store" --exclude "*~" CombinatoricsForHomalg/doc/*.* CombinatoricsForHomalg/doc/clean CombinatoricsForHomalg/gap/*.{gi,gd} CombinatoricsForHomalg/{CHANGES,PackageInfo.g,README,VERSION,init.g,read.g,makedoc.g,makefile,maketest.g,ListOfDocFiles.g,createautodoc.g} CombinatoricsForHomalg/examples/*.g)
 
 WEBPOS=~/gap/pkg/CombinatoricsForHomalg/public_html
 WEBPOS_FINAL=~/Sites/homalg-project/CombinatoricsForHomalg

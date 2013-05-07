@@ -20,21 +20,21 @@ DeclareAttributeWithDocumentation( "GrothendieckRing",
         IsCharacterTable,
         "Returns the Grothendieck ring of the character table.",
         "a ring",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Constructors" ]
         );
 
 DeclareAttributeWithDocumentation( "UnderlyingCharacterTable",
         IsElementOfGrothendieckGroup,
         "Returns the character table of the group.",
         "a character table",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "DualCharacter",
         IsElementOfGrothendieckGroup,
         "Returns the dual of a graded character.",
         "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "ForgetGroupAction",
@@ -42,7 +42,7 @@ DeclareAttributeWithDocumentation( "ForgetGroupAction",
         "Forget the group action and return the graded character.",
         "a graded Grothendieck ring element",
         "chi",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 ####################################
@@ -60,7 +60,7 @@ DeclareOperationWithDocumentation( "Coefficients",
           "The second entry of each pair is an irreducible character and the first entry is its multiplicity in <A>chi</A>." ],
         "a list with two entries",
         "chi",
-        [ "EG-Modules", "Constructor" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 # constructors:

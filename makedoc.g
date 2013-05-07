@@ -4,11 +4,20 @@
 ##  Call this with GAP.
 ##
 
-LoadPackage("GAPDoc");
+LoadPackage( "GAPDoc" );
 
-MakeGAPDocDoc("doc", "CombinatoricsForHomalg", [], "CombinatoricsForHomalg");
+SetGapDocLaTeXOptions( "utf8" );
+
+bib := ParseBibFiles( "doc/CombinatoricsForHomalg.bib" );
+WriteBibXMLextFile( "doc/CombinatoricsForHomalgBib.xml", bib );
+
+Read( "ListOfDocFiles.g" );
+
+PrintTo( "VERSION", PackageInfo( "CombinatoricsForHomalg" )[1].Version );
+
+MakeGAPDocDoc( "doc", "CombinatoricsForHomalg", list, "CombinatoricsForHomalg" );
 
 GAPDocManualLab("CombinatoricsForHomalg");
 
-quit;
+QUIT;
 

@@ -13,8 +13,7 @@
 DeclarePropertyWithDocumentation( "IsEquiDegree",
         IsElementOfGrothendieckGroup,
         "Returns if the element is of equi-degree.",
-        "<C>true</C> or <C>false</C>",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 ####################################
@@ -27,140 +26,140 @@ DeclareAttributeWithDocumentation( "Dimension",
         IsElementOfGrothendieckGroup,
         "Returns the dimension the base space.",
         "an integer",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "UnderlyingPolynomial",
         IsElementOfGrothendieckGroup,
         "Returns the underlying polynomial.",
         "an Laurent polynomial",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "ExteriorPowers",
         IsElementOfGrothendieckGroup,
         "Returns the exterior powers of the Grothendieck ring element.",
         "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "BaseSpace",
         IsElementOfGrothendieckGroup,
         "Returns the graded character of the base space.",
         "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "Socle",
         IsElementOfGrothendieckGroup,
         "Returns the graded socle.",
         "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "HomogeneousParts",
         IsElementOfGrothendieckGroup,
         "Returns all the homogeneous parts.",
         "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "DualOfBaseSpace",
         IsElementOfGrothendieckGroup,
         "Returns the dual of the graded character of the base space.",
         "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
         
 DeclareAttributeWithDocumentation( "ChernCharacter",
         IsElementOfGrothendieckGroup,
         "Returns the ChernCharacter",
         "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
                 
 DeclareAttributeWithDocumentation( "RankOfObject",
         IsElementOfGrothendieckGroup,
         "Returns the Rank",
         "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );        
 
 DeclareAttributeWithDocumentation( "PositivePart",
         IsElementOfGrothendieckGroup,
         "Returns the positive part of a Grothendieck ring element.",
         "a graded Grothendieck group element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "DeterminantOfBaseSpace",
         IsElementOfGrothendieckGroup,
         "Returns the graded character of the base space.",
         "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "DualOfExteriorPowersOfBaseSpace",
         IsElementOfGrothendieckGroup,
         "Returns the dual of the exterior powers of the graded character of the base space.",
         "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "TipOfModule",
         IsElementOfGrothendieckGroup,
         "Returns the head of a graded character.",
         "a graded Grothendieck group element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "BottomOfModule",
         IsElementOfGrothendieckGroup,
         "Returns the head of a graded character.",
         "a graded Grothendieck group element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "ProjectiveCoverOfTip",
         IsElementOfGrothendieckGroup,
         "Returns the projective cover of a given tip.",
         "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "ProjectiveCover",
         IsElementOfGrothendieckGroup,
         "Returns the projective cover of a Grothendieck ring element.",
         "a graded Grothendieck ring element",
-        [ "EG-Modules", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "InjectiveHullOfBottom",
         IsElementOfGrothendieckGroup,
         "Returns the injective hull of a given bottom.",
         "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "InjectiveHull",
         IsElementOfGrothendieckGroup,
         "Returns the injective hull of a Grothendieck ring element.",
         "a graded Grothendieck ring element",
-        [ "EG-Modules", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "InjectiveProjectiveSaturation",
         IsElementOfGrothendieckGroup,
         "Returns the injective hull of the projective syzygy of a Grothendieck ring element.",
         "a graded Grothendieck ring element",
-        [ "EG-Modules", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "ProjectiveInjectiveSaturation",
         IsElementOfGrothendieckGroup,
         "Returns the injective hull of the injective syzygy of a Grothendieck ring element.",
         "a graded Grothendieck ring element",
-        [ "EG-Modules", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "ValuesOfBettiTable",
@@ -168,7 +167,7 @@ DeclareAttributeWithDocumentation( "ValuesOfBettiTable",
         "Returns the values of the Betti table in a certain range.",
         "a list",
         "chi",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "HilbertPolynomial",
@@ -176,7 +175,7 @@ DeclareAttributeWithDocumentation( "HilbertPolynomial",
         "Returns the Hilbert polynomial.",
         "a univariate polynomial",
         "chi",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "ElementOfGrothendieckGroup",
@@ -184,7 +183,7 @@ DeclareAttributeWithDocumentation( "ElementOfGrothendieckGroup",
         "Returns the corresponding element of the Grothendieck group.",
         "a Grothendieck group element",
         "chi",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareAttributeWithDocumentation( "ChernPolynomial",
@@ -192,7 +191,7 @@ DeclareAttributeWithDocumentation( "ChernPolynomial",
         "Returns the corresponding Chern polynomial.",
         "a Chern polynomial with rank",
         "chi",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 ####################################
@@ -214,7 +213,7 @@ DeclareOperationWithDocumentation( "ExteriorPower",
         "Returns the <A>e</A>-th exterior powers of the <A>chi</A>.",
         "a graded ring element",
         "chi, e",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareOperationWithDocumentation( "Cokernel",
@@ -222,7 +221,7 @@ DeclareOperationWithDocumentation( "Cokernel",
         "Returns the cokernel of the unique map from <A>chi</A> to <A>psi</A>.",
         "a graded relative ring element",
         "chi, psi",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareOperationWithDocumentation( "Kernel",
@@ -230,7 +229,7 @@ DeclareOperationWithDocumentation( "Kernel",
         "Returns the kernel of the unique map from <A>chi</A> to <A>psi</A>.",
         "a graded relative ring element",
         "chi, psi",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareOperationWithDocumentation( "SyzygyObject",
@@ -238,7 +237,7 @@ DeclareOperationWithDocumentation( "SyzygyObject",
         "Returns the <A>i</A>-th syzyies object of <A>chi</A>.",
         "a graded relative ring element",
         "i, chi",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareOperationWithDocumentation( "CosyzygyObject",
@@ -246,7 +245,7 @@ DeclareOperationWithDocumentation( "CosyzygyObject",
         "Returns the <A>i</A>-th syzyies object of <A>chi</A>.",
         "a graded relative ring element",
         "i, chi",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
 DeclareOperationWithDocumentation( "VerticalShift",
@@ -254,7 +253,7 @@ DeclareOperationWithDocumentation( "VerticalShift",
         "Returns the i-th shift of chi.",
         "a graded relative ring element",
         "chi, i",
-        [ "Characters", "Methods_for_all_objects" ]
+        [ "Characters", "Methods_for_characters" ]
         );
 
         

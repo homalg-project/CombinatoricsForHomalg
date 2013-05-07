@@ -1,7 +1,7 @@
 <!-- 
 
   intro.xml             CombinatoricsForHomalg package documentation              Mohamed Barakat
-                                                                   Barbara Bremer
+                                                                                  Sebastian Posur
 
          Copyright (C) 2007-2008, Lehrstuhl B für Mathematik, RWTH-Aachen
 
@@ -13,12 +13,6 @@ behind the package.
 <Chapter Label="intro">
 <Heading>Introduction</Heading>
 
-<Section Label="philosophy">
-<Heading>Philosophy</Heading>
-
-This package is about CombinatoricsForHomalg products. To be written further.
-</Section>
-
 <Section Label="overview">
 <Heading>Overview over this manual</Heading>
 
@@ -29,7 +23,7 @@ Chapter <Ref Chap="install"/> describes the installation of this package.
 Finally, Chapter <Ref Chap="examples"/>
 shows instructive examples for the usage of this package.
 
-The main reference for the Maple implementation is <Cite Key="BR"/>.
+This is a homalg project package <Cite Key="BR"/>.
 
 </Section>
 
