@@ -915,10 +915,7 @@ InstallMethod( \*,
         [ IsElementOfGradedRelativeRingRep,
           IsElementOfGradedRelativeRingRep ],
         
-#   function( a, b )
-#     
-#     Error( "undefined\n" );
-       function( chi, psi )
+  function( chi, psi )
     local chiV;
     
     chiV := BaseSpace( chi );
