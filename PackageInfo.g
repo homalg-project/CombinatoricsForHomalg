@@ -22,13 +22,13 @@ PackageName := "CombinatoricsForHomalg",
 
 ##  This may be used by a default banner or on a Web page, should fit on
 ##  one line.
-Subtitle := "CombinatoricsForHomalg - CombinatoricsForHomalg constructions for homalg",
+Subtitle := "CombinatoricsForHomalg -- combinatorics for the homalg project",
 
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
 Version := Maximum( [
-  "2013.06.03", ## Mohamed's version
+  "2013.06.04", ## Mohamed's version
 ## this line prevents merge conflicts
   "2013.05.05", ## Sebastian's version
 ] ),
@@ -249,7 +249,7 @@ PackageDoc := rec(
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
   # LongTitle := "Elementary Divisors of Integer Matrices",
-  LongTitle := "CombinatoricsForHomalg - CombinatoricsForHomalg constructions for homalg",
+  LongTitle := "CombinatoricsForHomalg -- combinatorics for the homalg project",
   # Should this help book be autoloaded when GAP starts up? This should
   # usually be 'true', otherwise say 'false'. 
   Autoload  := false
