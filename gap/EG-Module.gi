@@ -161,6 +161,20 @@ InstallMethod( DualCharacter,
 end );
 
 ##
+InstallMethod( DualCharacter,
+        "for elements of a graded Grothendieck ring of a group",
+        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep and
+          IsFree and HasSocle ],
+        
+  function( chi )
+    
+    return FreeElementOfGradedRelativeGrothendieckRingOfGroup(
+                   DualCharacter( Socle( chi ) ),
+                   BaseSpace( chi ) );
+    
+end );
+
+##
 InstallMethod( PositivePart,
         "for elements of a graded Grothendieck ring of a group",
         [ IsElementOfGradedGrothendieckRingOfGroupRep ],
