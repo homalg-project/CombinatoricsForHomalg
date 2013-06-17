@@ -799,27 +799,33 @@ InstallMethod( Name,
     
     name := "";
     
+    if coeffs[1][2] = 1 then
+        Append( name, Concatenation( x, "^1\t* " ) );
+    elif coeffs[1][2] <> 0 then
+        Append( name, Concatenation( x, "^", String( coeffs[1][2] ), "\t* " ) );
+    else
+        Append( name, Concatenation( x, "^0\t* " ) );
+    fi;
+    
     Append( name,
             Concatenation( "(", String( DegreeOfCharacter( coeffs[1][1] ) ), "=[", Name( coeffs[1][1] ), "])" ) );
-    
-    if coeffs[1][2] = 1 then
-        Append( name, Concatenation( "*", x ) );
-    elif coeffs[1][2] <> 0 then
-        Append( name, Concatenation( "*", x, "^", String( coeffs[1][2] ) ) );
-    fi;
     
     l := Length( coeffs );
     
     for i in [ 2 .. l ] do
         
-        Append( name,
-                Concatenation( "+(", String( DegreeOfCharacter( coeffs[i][1] ) ), "=[", Name( coeffs[i][1] ), "])" ) );
+        Append( name, "\n" );
         
         if coeffs[i][2] = 1 then
-            Append( name, Concatenation( "*", x ) );
+            Append( name, Concatenation( x, "^1\t* " ) );
         elif coeffs[i][2] <> 0 then
-            Append( name, Concatenation( "*", x, "^", String( coeffs[i][2] ) ) );
+            Append( name, Concatenation( x, "^", String( coeffs[i][2] ), "\t* " ) );
+        else
+            Append( name, Concatenation( x, "^0\t* " ) );
         fi;
+        
+        Append( name,
+                Concatenation( "(", String( DegreeOfCharacter( coeffs[i][1] ) ), "=[", Name( coeffs[i][1] ), "])" ) );
         
     od;
     
@@ -858,7 +864,7 @@ InstallMethod( Name,
     
     return Concatenation(
                    Name( HomogeneousParts( o ) ),
-                   " -> P(",
+                   "\n |\n v\n P(",
                    Name( EvalRingElement( BaseSpace( o ) )[1][1] ), ")" );
     
 end );
@@ -871,9 +877,9 @@ InstallMethod( Name,
         
   function( o )
     
-    return Concatenation( "<",
+    return Concatenation(
                    Name( Socle( o ) ),
-                   "> -> P(",
+                   "\n |\n | ⊗ ω_E\n v\n P(",
                    Name( EvalRingElement( BaseSpace( o ) )[1][1] ), ")" );
     
 end );
