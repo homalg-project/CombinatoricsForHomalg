@@ -931,6 +931,19 @@ InstallMethod( \*,
 end );
 
 ##
+InstallMethod( Dual,
+        "for an element of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep and
+          IsFree and HasSocle ],
+        
+  function( chi )
+    
+    return chi!.ElementOfGradedRelativeRing(
+                   Dual( TipOfModule( chi ) ),
+                   BaseSpace( chi ) );
+    
+end );
+
 InstallMethod( ValuesOfBettiTable,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep ],

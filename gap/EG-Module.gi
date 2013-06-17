@@ -128,7 +128,7 @@ InstallMethod( Dimension,
 end );
 
 ##
-InstallMethod( DualCharacter,
+InstallMethod( Dual,
         "for elements of a Grothendieck ring of a group",
         [ IsElementOfGrothendieckRingOfGroupRep ],
         
@@ -141,7 +141,7 @@ InstallMethod( DualCharacter,
 end );
 
 ##
-InstallMethod( DualCharacter,
+InstallMethod( Dual,
         "for elements of a graded Grothendieck ring of a group",
         [ IsElementOfGradedGrothendieckRingOfGroupRep ],
         
@@ -150,27 +150,13 @@ InstallMethod( DualCharacter,
     
     psi := EvalRingElement( chi );
     
-    psi := List( psi, a -> [ DualCharacter( a[1] ), -a[2] ] );
+    psi := List( psi, a -> [ Dual( a[1] ), -a[2] ] );
     
     if HasIsEquiDegree( chi ) and IsEquiDegree( chi ) then
         return ElementOfGradedGrothendieckRingOfGroup( psi, IsEquiDegree );
     fi;
     
     return ElementOfGradedGrothendieckRingOfGroup( psi );
-    
-end );
-
-##
-InstallMethod( DualCharacter,
-        "for elements of a graded Grothendieck ring of a group",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep and
-          IsFree and HasSocle ],
-        
-  function( chi )
-    
-    return FreeElementOfGradedRelativeGrothendieckRingOfGroup(
-                   DualCharacter( Socle( chi ) ),
-                   BaseSpace( chi ) );
     
 end );
 
@@ -197,7 +183,7 @@ InstallMethod( DualOfBaseSpace,
         
   function( chi )
     
-    return DualCharacter( BaseSpace( chi ) );
+    return Dual( BaseSpace( chi ) );
     
 end );
 

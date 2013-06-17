@@ -30,13 +30,6 @@ DeclareAttributeWithDocumentation( "UnderlyingCharacterTable",
         [ "Characters", "Methods_for_characters" ]
         );
 
-DeclareAttributeWithDocumentation( "DualCharacter",
-        IsElementOfGrothendieckGroup,
-        "Returns the dual of a graded character.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
-
 DeclareAttributeWithDocumentation( "ForgetGroupAction",
         IsElementOfGrothendieckGroup,
         "Forget the group action and return the graded character.",
