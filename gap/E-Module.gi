@@ -944,6 +944,39 @@ InstallMethod( Dual,
     
 end );
 
+##
+InstallMethod( GradedHom,
+        "for two elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep and
+          IsFree and HasSocle,
+          IsElementOfGradedRelativeRingRep and
+          IsFree and HasSocle ],
+        
+  function( chi, psi )
+    
+    return Dual( chi ) * psi;
+    
+end );
+
+##
+InstallMethod( Hom,
+        "for two elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep and
+          IsFree and HasSocle,
+          IsElementOfGradedRelativeRingRep and
+          IsFree and HasSocle ],
+        
+  function( chi, psi )
+    local hom0, triv;
+    
+    hom0 := EvalRingElement( First( EvalRingElement( HomogeneousParts( GradedHom( chi, psi ) ) ), a -> a[2] = 0 )[1] );
+    triv := TrivialCharacter( UnderlyingCharacterTable( hom0 ) );
+    
+    return ScalarProduct( triv, hom0 );
+    
+end );
+
+##
 InstallMethod( ValuesOfBettiTable,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep ],

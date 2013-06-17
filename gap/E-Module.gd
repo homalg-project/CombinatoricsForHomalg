@@ -263,7 +263,13 @@ DeclareOperationWithDocumentation( "VerticalShift",
         [ "Characters", "Methods_for_characters" ]
         );
 
-        
+DeclareOperationWithDocumentation( "GradedHom",
+        [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ],
+        "Returns the internal Hom of two graded characters.",
+        "two graded Grothendieck ring elements",
+        [ "Characters", "Methods_for_characters" ]
+        );
+
 # constructors:
 
 DeclareGlobalFunctionWithDocumentation( "ElementOfRing",
