@@ -41,6 +41,28 @@ BindGlobal( "TheTypeElementOfGradedRelativeGrothendieckRingOfGroup",
 #
 ####################################
 
+#
+InstallMethod( IsPure,
+        "for elements of a Grothendieck ring of a group",
+        [ IsElementOfGrothendieckRingOfGroupRep ],
+
+  function( a )
+
+    return  ( a = -NegativePart( a ) ) or ( a = PositivePart( a ) );
+
+end );
+
+#
+InstallMethod( IsPure,
+        "for elements of a Grothendieck ring of a group",
+        [ IsElementOfGradedGrothendieckRingOfGroupRep ],
+
+  function( a )
+
+    return  ( a = -NegativePart( a ) ) or ( a = PositivePart( a ) );
+
+end );
+
 ####################################
 #
 # methods for attributes:
@@ -54,7 +76,7 @@ InstallMethod( PositivePart,
         
   function( a )
     local ct, irr, ring;
-    
+
     ct := UnderlyingCharacterTable( a );
     
     irr := Irr( ct );
@@ -71,6 +93,17 @@ InstallMethod( PositivePart,
     
     return ElementOfGrothendieckRingOfGroup( a, ring );
     
+end );
+
+##
+InstallMethod( NegativePart,
+        "for elements of a Grothendieck ring of a group",
+        [ IsElementOfGrothendieckRingOfGroupRep ],
+
+  function( chi )
+
+    return PositivePart( -chi );
+
 end );
 
 ##
@@ -177,6 +210,22 @@ InstallMethod( PositivePart,
 end );
 
 ##
+InstallMethod( NegativePart,
+        "for elements of a graded Grothendieck ring of a group",
+        [ IsElementOfGradedGrothendieckRingOfGroupRep ],
+
+  function( chi )
+    local ring;
+
+    ring := GrothendieckRing( UnderlyingCharacterTable( chi ) );
+
+    chi := List( EvalRingElement( chi ), a -> [ NegativePart( a[1] ), a[2] ]  );
+
+    return ElementOfGradedGrothendieckRingOfGroup( chi, ring );
+
+end );
+
+##
 InstallMethod( DualOfBaseSpace,
         "for elements of a graded relative Grothendieck ring of a group",
         [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
@@ -224,6 +273,49 @@ InstallMethod( HilbertPolynomial,
     return HilbertPolynomial( ForgetGroupAction( chi ) );
     
 end );
+
+# G := AlternatingGroup( 5 );
+# chi := ElementOfGradedRelativeGrothendieckRingOfGroup( [ [ Irr( G )[5], 0 ] ], Irr( G )[5] );
+
+##
+InstallMethod( EulerCharacteristic,
+        "for elements of a graded relative Grothendieck ring of a group",
+        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
+  function( chi )
+    local coeffs, rhom, d, w, v;
+    
+    d := Dimension( chi );
+    
+    v := BaseSpace( chi );
+
+    v := EvalRingElement( v )[1][1];
+
+    w := DualCharacter( v );
+
+    rhom := function( i )
+        
+        if i in [ 1 .. d ] then
+            
+            return Zero( v );
+        
+        elif i <= 0 then
+            
+            return (-1)^i*SymmetricPower( w, -i );
+            
+        elif i >= ( d + 1 ) then
+
+            return (-1)^d *(-1)^i* ExteriorPower( v, d + 1 ) * SymmetricPower( v, i - ( d + 1 ) );
+
+        fi;
+                
+    end;
+    
+    coeffs := EvalRingElement( HomogeneousParts( chi ) );
+
+    return Zero( v ) + Sum( coeffs, j -> j[1] * rhom( j[2] ) );
+
+end );
+
 
 
 ####################################
@@ -290,6 +382,32 @@ InstallMethod( ExteriorPower,
 end );
 
 ##
+InstallMethod( SymmetricPower,
+        "for elements of a Grothendieck ring of a group",
+        [ IsElementOfGrothendieckRingOfGroupRep, IsInt ],
+
+  function( chi, e )
+    local ct;
+
+    if IsZero( chi ) then
+        return chi;
+    elif e = 0 then
+        return chi^0;
+    elif e < 0 then
+        return 0 * chi;
+    fi;
+
+    ct := UnderlyingCharacterTable( chi );
+
+    chi := EvalRingElement( chi );
+
+    chi :=  SymmetricParts( ct, [ chi ], e )[1];
+
+    return ElementOfGrothendieckRingOfGroup( chi );
+
+end );
+
+##
 InstallMethod( ExteriorPower,
         "for elements of a graded Grothendieck ring of a group",
         [ IsElementOfGradedGrothendieckRingOfGroupRep and IsEquiDegree, IsInt ],
@@ -318,12 +436,10 @@ end );
 
 ##
 InstallMethod( VerticalShift,
-        "for elements of a graded relative ring and an integer",
+        "for elements of a graded relative Grothendieck ring of a group and an integer",
         [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep, IsInt ],
   function( chi, i )
-    local s, d, ct;
-    
-    d := Dimension( chi );
+    local s, ct;
     
     ct := UnderlyingCharacterTable( chi );
 
@@ -333,6 +449,15 @@ InstallMethod( VerticalShift,
   
 end );
 
+##
+InstallMethod( Twist,
+        "for elements of a graded relative Grothendieck ring of a group and an integer",
+        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep, IsInt ],
+  function( chi, i )
+
+    return (-1)^i * VerticalShift( chi, - i );
+
+end );
 
 ####################################
 #

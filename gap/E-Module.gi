@@ -110,6 +110,28 @@ InstallMethod( PositivePart,
 end );
 
 ##
+InstallMethod( NegativePart,
+        "for elements of a graded ring",
+        [ IsElementOfGradedRingRep ],
+
+  function( chi )
+
+    return PositivePart( -chi );
+
+end );
+
+##
+InstallMethod( IsPure,
+        "for elements of a graded ring",
+        [ IsElementOfGradedRingRep ],
+
+  function( chi )
+
+    return  ( chi = -NegativePart( chi ) ) or ( chi = PositivePart( chi ) );
+
+end );
+
+##
 InstallMethod( UnderlyingPolynomial,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep ],
@@ -254,6 +276,28 @@ InstallMethod( PositivePart,
                    PositivePart( HomogeneousParts( chi ) ),
                    BaseSpace( chi ) );
     
+end );
+
+##
+InstallMethod( NegativePart,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep ],
+
+  function( chi )
+
+    return PositivePart( -chi );
+
+end );
+
+##
+InstallMethod( IsPure,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep ],
+
+  function( chi )
+
+    return  ( chi = -NegativePart( chi ) ) or ( chi = PositivePart( chi ) );
+
 end );
 
 ##

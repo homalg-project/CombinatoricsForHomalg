@@ -16,6 +16,12 @@ DeclarePropertyWithDocumentation( "IsEquiDegree",
         [ "Characters", "Methods_for_characters" ]
         );
 
+DeclarePropertyWithDocumentation( "IsPure",
+        IsElementOfGrothendieckGroup,
+        "Returns true if the element has only positive or only negative parts, false otherwise.",
+        [ "Characters", "Methods_for_characters" ]
+        );
+
 ####################################
 #
 # attributes:
@@ -95,6 +101,13 @@ DeclareAttributeWithDocumentation( "RankOfObject",
 DeclareAttributeWithDocumentation( "PositivePart",
         IsElementOfGrothendieckGroup,
         "Returns the positive part of a Grothendieck ring element.",
+        "a graded Grothendieck group element",
+        [ "Characters", "Methods_for_characters" ]
+        );
+
+DeclareAttributeWithDocumentation( "NegativePart",
+        IsElementOfGrothendieckGroup,
+        "Returns the negative part of a Grothendieck ring element.",
         "a graded Grothendieck group element",
         [ "Characters", "Methods_for_characters" ]
         );
@@ -184,6 +197,14 @@ DeclareAttributeWithDocumentation( "HilbertPolynomial",
         "chi",
         [ "Characters", "Methods_for_characters" ]
         );
+        
+DeclareAttributeWithDocumentation( "EulerCharacteristic",
+        IsElementOfGrothendieckGroup,
+        "Returns the Euler Characteristic.",
+        "an element of a Grothendieck ring",
+        "chi",
+        [ "Characters", "Methods_for_characters" ]
+        );
 
 DeclareAttributeWithDocumentation( "ElementOfGrothendieckGroup",
         IsElementOfGrothendieckGroup,
@@ -218,6 +239,14 @@ DeclareGlobalFunctionWithDocumentation( "VariableForGrothendieckHilbertSeries",
 DeclareOperationWithDocumentation( "ExteriorPower",
         [ IsElementOfGrothendieckGroup, IsInt ],
         "Returns the <A>e</A>-th exterior powers of the <A>chi</A>.",
+        "a graded ring element",
+        "chi, e",
+        [ "Characters", "Methods_for_characters" ]
+        );
+
+DeclareOperationWithDocumentation( "SymmetricPower",
+        [ IsElementOfGrothendieckGroup, IsInt ],
+        "Returns the <A>e</A>-th symmetric powers of the <A>chi</A>.",
         "a graded ring element",
         "chi, e",
         [ "Characters", "Methods_for_characters" ]
@@ -258,6 +287,14 @@ DeclareOperationWithDocumentation( "CosyzygyObject",
 DeclareOperationWithDocumentation( "VerticalShift",
         [ IsElementOfGrothendieckGroup, IsInt ],
         "Returns the i-th shift of chi.",
+        "a graded relative ring element",
+          "chi, i",
+        [ "Characters", "Methods_for_characters" ]
+        );
+
+DeclareOperationWithDocumentation( "Twist",
+        [ IsElementOfGrothendieckGroup, IsInt ],
+        "Returns the i-th twist of chi.",
         "a graded relative ring element",
         "chi, i",
         [ "Characters", "Methods_for_characters" ]
