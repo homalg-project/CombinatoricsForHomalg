@@ -28,7 +28,7 @@ Subtitle := "CombinatoricsForHomalg -- combinatorics for the homalg project",
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
 Version := Maximum( [
-  "2013.06.06", ## Mohamed's version
+  "2013.06.08", ## Mohamed's version
 ## this line prevents merge conflicts
   "2013.06.07", ## Sebastian's version
 ] ),

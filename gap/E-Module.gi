@@ -694,6 +694,13 @@ InstallMethod( AdditiveInverse,
 end );
 
 ##
+InstallMethod( AdditiveInverse,
+        "for elements of a graded ring",
+        [ IsElementOfGradedRingRep and IsZero ],
+        
+  IdFunc );
+
+##
 InstallMethod( One,
         "for elements of a graded ring",
         [ IsElementOfGradedRingRep ],
