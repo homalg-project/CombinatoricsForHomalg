@@ -1090,38 +1090,8 @@ InstallMethod( HilbertPolynomial,
         [ IsElementOfGradedRelativeRingRep ],
         
   function( chi )
-    local t, HP, socles, base_points, euler;
-    
-    t := VariableForHilbertPolynomial( );
-    
-    socles := ValuesOfBettiTable( chi );
-    
-    if socles = [ ] then
-        HP := 0 * t;
-        HP!.GradedModule := chi;
-        return HP;
-    fi;
-    
-    base_points := List( socles, a -> a[2] );
-    
-    base_points := DuplicateFreeList( base_points );
-    
-    euler := List( base_points, a -> Sum( Filtered( socles, b -> b[2] = a ), c -> c[1] ) );
-    
-    HP := InterpolatedPolynomial( Integers, base_points, euler );
-    
-    HP := SignInt( LeadingCoefficient( HP ) ) * HP;
-    
-    HP := Value( HP, t );
-    
-    if Degree( HP ) > Dimension( chi ) then
-        Error( "the degree of the Hilbert polynomial is ", Degree( HP ),
-               " which is bigger than the ambient dimension ", Dimension( chi ), "\n" );
-    fi;
-    
-    HP!.GradedModule := chi;
-    
-    return HP;
+
+    return HilbertPolynomial( ChernCharacter( chi ) );
     
 end );
 
@@ -1148,8 +1118,7 @@ InstallMethod( ChernPolynomial,
         
   function( chi )
     
-    return ChernPolynomial( ElementOfGrothendieckGroup( chi ) );
-    
+    return ChernPolynomial( ChernCharacter( chi ) );
 end );
 
 ##
