@@ -300,7 +300,7 @@ DeclareOperationWithDocumentation( "Twist",
         [ "Characters", "Methods_for_characters" ]
         );
 
-DeclareOperationWithDocumentation( "GradedHom",
+DeclareOperationWithDocumentation( "CombinatorialHom",
         [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ],
         "Returns the internal Hom of two graded characters.",
         "two graded Grothendieck ring elements",

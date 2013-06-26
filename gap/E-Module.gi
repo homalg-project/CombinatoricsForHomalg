@@ -996,7 +996,7 @@ InstallMethod( Dual,
 end );
 
 ##
-InstallMethod( GradedHom,
+InstallMethod( CombinatorialHom,
         "for two elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep and
           IsFree and HasSocle,
@@ -1020,7 +1020,7 @@ InstallMethod( Hom,
   function( chi, psi )
     local hom0, triv;
     
-    hom0 := EvalRingElement( First( EvalRingElement( HomogeneousParts( GradedHom( chi, psi ) ) ), a -> a[2] = 0 )[1] );
+    hom0 := EvalRingElement( First( EvalRingElement( HomogeneousParts( CombinatorialHom( chi, psi ) ) ), a -> a[2] = 0 )[1] );
     triv := TrivialCharacter( UnderlyingCharacterTable( hom0 ) );
     
     return ScalarProduct( triv, hom0 );
