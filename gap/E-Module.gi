@@ -988,20 +988,33 @@ InstallMethod( Dual,
           IsFree and HasSocle ],
         
   function( chi )
-    
-    return chi!.ElementOfGradedRelativeRing(
-                   Dual( TipOfModule( chi ) ),
+      
+    return chi!.FreeElementOfGradedRelativeRing(
+                   Dual( Head( chi ) ),
                    BaseSpace( chi ) );
+    
+end );
+
+##
+InstallMethod( Head,
+        "for an element of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep and
+          IsFree and HasSocle ],
+
+  function( chi )
+    local omega;
+
+    omega := TipOfModule( DualOfExteriorPowersOfBaseSpace( chi ) );
+
+    return Socle( chi )*omega;
     
 end );
 
 ##
 InstallMethod( CombinatorialHom,
         "for two elements of a graded relative ring",
-        [ IsElementOfGradedRelativeRingRep and
-          IsFree and HasSocle,
-          IsElementOfGradedRelativeRingRep and
-          IsFree and HasSocle ],
+        [ IsElementOfGradedRingRep,
+          IsElementOfGradedRingRep ],
         
   function( chi, psi )
     
@@ -1019,11 +1032,22 @@ InstallMethod( Hom,
         
   function( chi, psi )
     local hom0, triv;
+
+    hom0 := First( EvalRingElement( CombinatorialHom( Head( chi ), HomogeneousParts( psi ) ) ), a -> a[2] = 0 );
     
-    hom0 := EvalRingElement( First( EvalRingElement( HomogeneousParts( CombinatorialHom( chi, psi ) ) ), a -> a[2] = 0 )[1] );
-    triv := TrivialCharacter( UnderlyingCharacterTable( hom0 ) );
-    
-    return ScalarProduct( triv, hom0 );
+    if hom0 = fail then
+
+      return 0;
+
+    else
+
+      hom0 := EvalRingElement( hom0[1] );
+      
+      triv := TrivialCharacter( UnderlyingCharacterTable( hom0 ) );
+      
+      return ScalarProduct( triv, hom0 );
+
+    fi;
     
 end );
 

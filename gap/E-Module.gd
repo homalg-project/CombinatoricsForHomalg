@@ -63,6 +63,13 @@ DeclareAttributeWithDocumentation( "Socle",
         [ "Characters", "Methods_for_characters" ]
         );
 
+DeclareAttributeWithDocumentation( "Head",
+        IsElementOfGrothendieckGroup,
+        "Returns the graded head.",
+        "a graded Grothendieck ring element",
+        [ "Characters", "Methods_for_characters" ]
+        );
+
 DeclareAttributeWithDocumentation( "HomogeneousParts",
         IsElementOfGrothendieckGroup,
         "Returns all the homogeneous parts.",
