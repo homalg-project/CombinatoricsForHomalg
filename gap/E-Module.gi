@@ -988,20 +988,33 @@ InstallMethod( Dual,
           IsFree and HasSocle ],
         
   function( chi )
-    
-    return chi!.ElementOfGradedRelativeRing(
-                   Dual( TipOfModule( chi ) ),
+      
+    return chi!.FreeElementOfGradedRelativeRing(
+                   Dual( Head( chi ) ),
                    BaseSpace( chi ) );
+    
+end );
+
+##
+InstallMethod( Head,
+        "for an element of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep and
+          IsFree and HasSocle ],
+
+  function( chi )
+    local omega;
+
+    omega := TipOfModule( DualOfExteriorPowersOfBaseSpace( chi ) );
+
+    return Socle( chi )*omega;
     
 end );
 
 ##
 InstallMethod( CombinatorialHom,
         "for two elements of a graded relative ring",
-        [ IsElementOfGradedRelativeRingRep and
-          IsFree and HasSocle,
-          IsElementOfGradedRelativeRingRep and
-          IsFree and HasSocle ],
+        [ IsElementOfGradedRingRep,
+          IsElementOfGradedRingRep ],
         
   function( chi, psi )
     
@@ -1019,11 +1032,22 @@ InstallMethod( Hom,
         
   function( chi, psi )
     local hom0, triv;
+
+    hom0 := First( EvalRingElement( CombinatorialHom( Head( chi ), HomogeneousParts( psi ) ) ), a -> a[2] = 0 );
     
-    hom0 := EvalRingElement( First( EvalRingElement( HomogeneousParts( CombinatorialHom( chi, psi ) ) ), a -> a[2] = 0 )[1] );
-    triv := TrivialCharacter( UnderlyingCharacterTable( hom0 ) );
-    
-    return ScalarProduct( triv, hom0 );
+    if hom0 = fail then
+
+      return 0;
+
+    else
+
+      hom0 := EvalRingElement( hom0[1] );
+      
+      triv := TrivialCharacter( UnderlyingCharacterTable( hom0 ) );
+      
+      return ScalarProduct( triv, hom0 );
+
+    fi;
     
 end );
 
@@ -1090,38 +1114,8 @@ InstallMethod( HilbertPolynomial,
         [ IsElementOfGradedRelativeRingRep ],
         
   function( chi )
-    local t, HP, socles, base_points, euler;
-    
-    t := VariableForHilbertPolynomial( );
-    
-    socles := ValuesOfBettiTable( chi );
-    
-    if socles = [ ] then
-        HP := 0 * t;
-        HP!.GradedModule := chi;
-        return HP;
-    fi;
-    
-    base_points := List( socles, a -> a[2] );
-    
-    base_points := DuplicateFreeList( base_points );
-    
-    euler := List( base_points, a -> Sum( Filtered( socles, b -> b[2] = a ), c -> c[1] ) );
-    
-    HP := InterpolatedPolynomial( Integers, base_points, euler );
-    
-    HP := SignInt( LeadingCoefficient( HP ) ) * HP;
-    
-    HP := Value( HP, t );
-    
-    if Degree( HP ) > Dimension( chi ) then
-        Error( "the degree of the Hilbert polynomial is ", Degree( HP ),
-               " which is bigger than the ambient dimension ", Dimension( chi ), "\n" );
-    fi;
-    
-    HP!.GradedModule := chi;
-    
-    return HP;
+
+    return HilbertPolynomial( ChernCharacter( chi ) );
     
 end );
 
@@ -1148,8 +1142,7 @@ InstallMethod( ChernPolynomial,
         
   function( chi )
     
-    return ChernPolynomial( ElementOfGrothendieckGroup( chi ) );
-    
+    return ChernPolynomial( ChernCharacter( chi ) );
 end );
 
 ##
