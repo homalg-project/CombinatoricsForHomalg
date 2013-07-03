@@ -267,15 +267,34 @@ end );
 InstallMethod( HilbertPolynomial,
         "for elements of a graded relative Grothendieck ring of a group",
         [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
-        
+
   function( chi )
-    
+
     return HilbertPolynomial( ForgetGroupAction( chi ) );
-    
+
 end );
 
-# G := AlternatingGroup( 5 );
-# chi := ElementOfGradedRelativeGrothendieckRingOfGroup( [ [ Irr( G )[5], 0 ] ], Irr( G )[5] );
+##
+InstallMethod( ChernCharacter,
+        "for elements of a graded relative Grothendieck ring of a group",
+        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
+
+  function( chi )
+
+    return ChernCharacter( ForgetGroupAction( chi ) );
+
+end );
+
+##
+InstallMethod( ChernPolynomial,
+        "for elements of a graded relative Grothendieck ring of a group",
+        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
+
+  function( chi )
+
+    return ChernPolynomial( ForgetGroupAction( chi ) );
+
+end );
 
 ##
 InstallMethod( EulerCharacteristic,
@@ -988,9 +1007,10 @@ InstallMethod( Name,
   function( o )
     
     return Concatenation(
+                   "\n",
                    Name( HomogeneousParts( o ) ),
                    "\n |\n v\n P(",
-                   Name( EvalRingElement( BaseSpace( o ) )[1][1] ), ")" );
+                   Name( EvalRingElement( BaseSpace( o ) )[1][1] ), ")\n" );
     
 end );
 
@@ -1003,8 +1023,9 @@ InstallMethod( Name,
   function( o )
     
     return Concatenation(
+                   "\n",
                    Name( Socle( o ) ),
                    "\n |\n | ⊗ ω_E\n v\n P(",
-                   Name( EvalRingElement( BaseSpace( o ) )[1][1] ), ")" );
+                   Name( EvalRingElement( BaseSpace( o ) )[1][1] ), ")\n" );
     
 end );
