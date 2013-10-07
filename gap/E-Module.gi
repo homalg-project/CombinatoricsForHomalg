@@ -565,7 +565,7 @@ InstallGlobalFunction( VariableForGrothendieckHilbertSeries,
   function( arg )
     local x;
     
-    if not IsBound( HOMALG_MODULES.variable_for__Hilbert_series ) then
+    if not IsBound( HOMALG_MODULES.variable_for_Hilbert_series ) then
         
         if Length( arg ) > 0 and IsString( arg[1] ) then
             x := arg[1];
@@ -575,10 +575,10 @@ InstallGlobalFunction( VariableForGrothendieckHilbertSeries,
         
         x := Indeterminate( Rationals, x );
         
-        HOMALG_MODULES.variable_for__Hilbert_series := x;
+        HOMALG_MODULES.variable_for_Hilbert_series := x;
     fi;
     
-    return HOMALG_MODULES.variable_for__Hilbert_series;
+    return HOMALG_MODULES.variable_for_Hilbert_series;
     
 end );
 
