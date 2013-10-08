@@ -11,3 +11,5 @@
 ReadPackage( "CombinatoricsForHomalg", "gap/E-Module.gi" );
 
 ReadPackage( "CombinatoricsForHomalg", "gap/EG-Module.gi" );
+
+ReadPackage( "CombinatoricsForHomalg", "gap/Matroids.gi" );
