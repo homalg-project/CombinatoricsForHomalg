@@ -50,6 +50,17 @@ InstallMethod( PoincarePolynomial,
     
 end );
 
+##
+InstallMethod( LeadingCoefficientOfPoincarePolynomial,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+        
+  function( M )
+    
+    return TuttePolynomial( M, 1, 0 );
+    
+end );
+
 ####################################
 #
 # methods for operations:

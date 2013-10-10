@@ -34,6 +34,15 @@ DeclareAttributeWithDocumentation( "PoincarePolynomial",
         [ "Matroids", "Methods_for_matroids" ]
         );
 
+DeclareAttributeWithDocumentation( "LeadingCoefficientOfPoincarePolynomial",
+        IsHomalgMatrix,
+        [ "Returns the leading coefficient of the Poincare polynomial of the realizable matroid represented by",
+          "the rows of the matrix <A>M</A>." ],
+        "a positive integer",
+        "M",
+        [ "Matroids", "Methods_for_matroids" ]
+        );
+
 ####################################
 #
 # global functions and operations:
