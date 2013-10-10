@@ -20,7 +20,7 @@ DeclareAttributeWithDocumentation( "CharacteristicPolynomial",
         IsHomalgMatrix,
         [ "Returns the characteristic polynomial of the realizable matroid represented by",
           "the rows of the matrix <A>M</A>." ],
-        "a univariate polynomial in <M>t=</M><C>VariableForCharacteristicPolynomial()</C>.",
+        "a univariate polynomial in <M>t=</M><C>VariableForCharacteristicPolynomial()</C>",
         "M",
         [ "Matroids", "Methods_for_matroids" ]
         );
@@ -29,7 +29,7 @@ DeclareAttributeWithDocumentation( "PoincarePolynomial",
         IsHomalgMatrix,
         [ "Returns the Poincare polynomial of the realizable matroid represented by",
           "the rows of the matrix <A>M</A>." ],
-        "a univariate polynomial in <M>t=</M><C>VariableForCharacteristicPolynomial()</C>.",
+        "a univariate polynomial in <M>t=</M><C>VariableForCharacteristicPolynomial()</C>",
         "M",
         [ "Matroids", "Methods_for_matroids" ]
         );
