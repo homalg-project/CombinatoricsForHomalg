@@ -28,7 +28,7 @@ Subtitle := "Combinatorics for the homalg project",
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
 Version := Maximum( [
-  "2013.09.21", ## Mohamed's version
+  "2013.10.19", ## Mohamed's version
 ## this line prevents merge conflicts
   "2013.06.07", ## Sebastian's version
 ] ),
@@ -267,6 +267,7 @@ Dependencies := rec(
   # without these, the package will not load
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2012.10.26" ],
+                   [ "alcove", ">= 2013-10-19" ],
                    [ "Modules", ">= 2013.01.05" ],
                    [ "GAPDoc", ">= 1.1" ] ],
   # without these the package will issue a warning while loading
