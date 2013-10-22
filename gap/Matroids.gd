@@ -57,7 +57,8 @@ DeclareOperationWithDocumentation( "TuttePolynomial",
           "the rows of the matrix <A>M</A>." ],
         "a bivariate polynomial in <A>x</A> and <A>y</A>",
         "M, x, y",
-        [ "Matroids", "Methods_for_matroids" ]
+        [ "Matroids", "Methods_for_matroids" ],
+        rec( function_label := "for IsMatroid, IsRingElement, IsRingElement" )
         );
 
 DeclareOperationWithDocumentation( "CharacteristicPolynomial",
@@ -66,7 +67,8 @@ DeclareOperationWithDocumentation( "CharacteristicPolynomial",
           "the rows of the matrix <A>M</A>." ],
         "a univariate polynomial in <A>t</A>",
         "M, t",
-        [ "Matroids", "Methods_for_matroids" ]
+        [ "Matroids", "Methods_for_matroids" ],
+        rec( function_label := "for IsMatroid, IsRingElement" )
         );
 
 DeclareOperationWithDocumentation( "PoincarePolynomial",
@@ -75,7 +77,8 @@ DeclareOperationWithDocumentation( "PoincarePolynomial",
           "the rows of the matrix <A>M</A>." ],
         "a univariate polynomial in <A>t</A>",
         "M, t",
-        [ "Matroids", "Methods_for_matroids" ]
+        [ "Matroids", "Methods_for_matroids" ],
+        rec( function_label := "for IsMatroid, IsRingElement" )
         );
 
 # constructors:
