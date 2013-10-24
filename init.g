@@ -11,5 +11,3 @@
 ReadPackage( "CombinatoricsForHomalg", "gap/E-Module.gd" );
 
 ReadPackage( "CombinatoricsForHomalg", "gap/EG-Module.gd" );
-
-ReadPackage( "CombinatoricsForHomalg", "gap/Matroids.gd" );
