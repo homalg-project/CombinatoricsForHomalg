@@ -10,17 +10,18 @@
 #
 ####################################
 
-DeclarePropertyWithDocumentation( "IsEquiDegree",
-        IsElementOfGrothendieckGroup,
-        "Returns if the element is of equi-degree.",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns if the element is of equi-degree.
+#! @ChapterInfo Characters, Methods for characters
+DeclareProperty( "IsEquiDegree",
+                  IsElementOfGrothendieckGroup );
 
-DeclarePropertyWithDocumentation( "IsPure",
-        IsElementOfGrothendieckGroup,
-        "Returns true if the element has only positive or only negative parts, false otherwise.",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns true if the element has only positive or only negative parts, false otherwise.
+#! @ChapterInfo Characters, Methods for characters
+DeclareProperty( "IsPure",
+                  IsElementOfGrothendieckGroup );
+
 
 ####################################
 #
@@ -28,206 +29,207 @@ DeclarePropertyWithDocumentation( "IsPure",
 #
 ####################################
 
-DeclareAttributeWithDocumentation( "Dimension",
-        IsElementOfGrothendieckGroup,
-        "Returns the dimension the base space.",
-        "an integer",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the dimension the base space.
+#! @Returns an integer
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "Dimension",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "UnderlyingPolynomial",
-        IsElementOfGrothendieckGroup,
-        "Returns the underlying polynomial.",
-        "an Laurent polynomial",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the underlying polynomial.
+#! @Returns an Laurent polynomial
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "UnderlyingPolynomial",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "ExteriorPowers",
-        IsElementOfGrothendieckGroup,
-        "Returns the exterior powers of the Grothendieck ring element.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the exterior powers of the Grothendieck ring element.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "ExteriorPowers",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "BaseSpace",
-        IsElementOfGrothendieckGroup,
-        "Returns the graded character of the base space.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the graded character of the base space.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "BaseSpace",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "Socle",
-        IsElementOfGrothendieckGroup,
-        "Returns the graded socle.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the graded socle.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "Socle",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "Head",
-        IsElementOfGrothendieckGroup,
-        "Returns the graded head.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the graded head.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "Head",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "HomogeneousParts",
-        IsElementOfGrothendieckGroup,
-        "Returns all the homogeneous parts.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns all the homogeneous parts.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "HomogeneousParts",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "DualOfBaseSpace",
-        IsElementOfGrothendieckGroup,
-        "Returns the dual of the graded character of the base space.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
-        
-DeclareAttributeWithDocumentation( "Dual",
-        IsElementOfGrothendieckGroup,
-        "Returns the dual of a graded character.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the dual of the graded character of the base space.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "DualOfBaseSpace",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "ChernCharacter",
-        IsElementOfGrothendieckGroup,
-        "Returns the ChernCharacter",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
-                
-DeclareAttributeWithDocumentation( "RankOfObject",
-        IsElementOfGrothendieckGroup,
-        "Returns the Rank",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );        
+#! @Description
+#!  Returns the dual of a graded character.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "Dual",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "PositivePart",
-        IsElementOfGrothendieckGroup,
-        "Returns the positive part of a Grothendieck ring element.",
-        "a graded Grothendieck group element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the ChernCharacter
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "ChernCharacter",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "NegativePart",
-        IsElementOfGrothendieckGroup,
-        "Returns the negative part of a Grothendieck ring element.",
-        "a graded Grothendieck group element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the Rank
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "RankOfObject",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "DeterminantOfBaseSpace",
-        IsElementOfGrothendieckGroup,
-        "Returns the graded character of the base space.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the positive part of a Grothendieck ring element.
+#! @Returns a graded Grothendieck group element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "PositivePart",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "DualOfExteriorPowersOfBaseSpace",
-        IsElementOfGrothendieckGroup,
-        "Returns the dual of the exterior powers of the graded character of the base space.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the negative part of a Grothendieck ring element.
+#! @Returns a graded Grothendieck group element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "NegativePart",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "TipOfModule",
-        IsElementOfGrothendieckGroup,
-        "Returns the head of a graded character.",
-        "a graded Grothendieck group element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the graded character of the base space.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "DeterminantOfBaseSpace",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "BottomOfModule",
-        IsElementOfGrothendieckGroup,
-        "Returns the head of a graded character.",
-        "a graded Grothendieck group element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the dual of the exterior powers of the graded character of the base space.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "DualOfExteriorPowersOfBaseSpace",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "ProjectiveCoverOfTip",
-        IsElementOfGrothendieckGroup,
-        "Returns the projective cover of a given tip.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the head of a graded character.
+#! @Returns a graded Grothendieck group element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "TipOfModule",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "ProjectiveCover",
-        IsElementOfGrothendieckGroup,
-        "Returns the projective cover of a Grothendieck ring element.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the head of a graded character.
+#! @Returns a graded Grothendieck group element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "BottomOfModule",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "InjectiveHullOfBottom",
-        IsElementOfGrothendieckGroup,
-        "Returns the injective hull of a given bottom.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the projective cover of a given tip.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "ProjectiveCoverOfTip",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "InjectiveHull",
-        IsElementOfGrothendieckGroup,
-        "Returns the injective hull of a Grothendieck ring element.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the projective cover of a Grothendieck ring element.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "ProjectiveCover",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "InjectiveProjectiveSaturation",
-        IsElementOfGrothendieckGroup,
-        "Returns the injective hull of the projective syzygy of a Grothendieck ring element.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the injective hull of a given bottom.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "InjectiveHullOfBottom",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "ProjectiveInjectiveSaturation",
-        IsElementOfGrothendieckGroup,
-        "Returns the injective hull of the injective syzygy of a Grothendieck ring element.",
-        "a graded Grothendieck ring element",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the injective hull of a Grothendieck ring element.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "InjectiveHull",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "ValuesOfBettiTable",
-        IsElementOfGrothendieckGroup,
-        "Returns the values of the Betti table in a certain range.",
-        "a list",
-        "chi",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the injective hull of the projective syzygy of a Grothendieck ring element.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "InjectiveProjectiveSaturation",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "HilbertPolynomial",
-        IsElementOfGrothendieckGroup,
-        "Returns the Hilbert polynomial.",
-        "a univariate polynomial",
-        "chi",
-        [ "Characters", "Methods_for_characters" ]
-        );
-        
-DeclareAttributeWithDocumentation( "EulerCharacteristic",
-        IsElementOfGrothendieckGroup,
-        "Returns the Euler Characteristic.",
-        "an element of a Grothendieck ring",
-        "chi",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the injective hull of the injective syzygy of a Grothendieck ring element.
+#! @Returns a graded Grothendieck ring element
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "ProjectiveInjectiveSaturation",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "ElementOfGrothendieckGroup",
-        IsElementOfGrothendieckGroup,
-        "Returns the corresponding element of the Grothendieck group.",
-        "a Grothendieck group element",
-        "chi",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the values of the Betti table in a certain range.
+#! @Returns a list
+#! @Arguments chi
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "ValuesOfBettiTable",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "ChernPolynomial",
-        IsElementOfGrothendieckGroup,
-        "Returns the corresponding Chern polynomial.",
-        "a Chern polynomial with rank",
-        "chi",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the Hilbert polynomial.
+#! @Returns a univariate polynomial
+#! @Arguments chi
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "HilbertPolynomial",
+                  IsElementOfGrothendieckGroup );
+
+#! @Description
+#!  Returns the Euler Characteristic.
+#! @Returns an element of a Grothendieck ring
+#! @Arguments chi
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "EulerCharacteristic",
+                  IsElementOfGrothendieckGroup );
+
+#! @Description
+#!  Returns the corresponding element of the Grothendieck group.
+#! @Returns a Grothendieck group element
+#! @Arguments chi
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "ElementOfGrothendieckGroup",
+                  IsElementOfGrothendieckGroup );
+
+#! @Description
+#!  Returns the corresponding Chern polynomial.
+#! @Returns a Chern polynomial with rank
+#! @Arguments chi
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "ChernPolynomial",
+                  IsElementOfGrothendieckGroup );
+
 
 ####################################
 #
@@ -235,107 +237,109 @@ DeclareAttributeWithDocumentation( "ChernPolynomial",
 #
 ####################################
 
-DeclareGlobalFunctionWithDocumentation( "VariableForGrothendieckHilbertSeries",
-        "Creates an indeterminate for the use with the Grothendieck-Hilbert polynomials.",
-        "an indeterminate",
-        [ "Characters", "Constructors" ]
-        );
+#! @Description
+#!  Creates an indeterminate for the use with the Grothendieck-Hilbert polynomials.
+#! @Returns an indeterminate
+#! @ChapterInfo Characters, Constructors
+DeclareGlobalFunction( "VariableForGrothendieckHilbertSeries" );
+
 
 # basic operations
 
-DeclareOperationWithDocumentation( "ExteriorPower",
-        [ IsElementOfGrothendieckGroup, IsInt ],
-        "Returns the <A>e</A>-th exterior powers of the <A>chi</A>.",
-        "a graded ring element",
-        "chi, e",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the <A>e</A>-th exterior powers of the <A>chi</A>.
+#! @Returns a graded ring element
+#! @Arguments chi, e
+#! @ChapterInfo Characters, Methods for characters
+DeclareOperation( "ExteriorPower",
+                  [ IsElementOfGrothendieckGroup, IsInt ] );
 
-DeclareOperationWithDocumentation( "SymmetricPower",
-        [ IsElementOfGrothendieckGroup, IsInt ],
-        "Returns the <A>e</A>-th symmetric powers of the <A>chi</A>.",
-        "a graded ring element",
-        "chi, e",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the <A>e</A>-th symmetric powers of the <A>chi</A>.
+#! @Returns a graded ring element
+#! @Arguments chi, e
+#! @ChapterInfo Characters, Methods for characters
+DeclareOperation( "SymmetricPower",
+                  [ IsElementOfGrothendieckGroup, IsInt ] );
 
-DeclareOperationWithDocumentation( "Cokernel",
-        [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ],
-        "Returns the cokernel of the unique map from <A>chi</A> to <A>psi</A>.",
-        "a graded relative ring element",
-        "chi, psi",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the cokernel of the unique map from <A>chi</A> to <A>psi</A>.
+#! @Returns a graded relative ring element
+#! @Arguments chi, psi
+#! @ChapterInfo Characters, Methods for characters
+DeclareOperation( "Cokernel",
+                  [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ] );
 
-DeclareOperationWithDocumentation( "Kernel",
-        [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ],
-        "Returns the kernel of the unique map from <A>chi</A> to <A>psi</A>.",
-        "a graded relative ring element",
-        "chi, psi",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the kernel of the unique map from <A>chi</A> to <A>psi</A>.
+#! @Returns a graded relative ring element
+#! @Arguments chi, psi
+#! @ChapterInfo Characters, Methods for characters
+DeclareOperation( "Kernel",
+                  [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ] );
 
-DeclareOperationWithDocumentation( "SyzygyObject",
-        [ IsInt, IsElementOfGrothendieckGroup ],
-        "Returns the <A>i</A>-th syzyies object of <A>chi</A>.",
-        "a graded relative ring element",
-        "i, chi",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the <A>i</A>-th syzyies object of <A>chi</A>.
+#! @Returns a graded relative ring element
+#! @Arguments i, chi
+#! @ChapterInfo Characters, Methods for characters
+DeclareOperation( "SyzygyObject",
+                  [ IsInt, IsElementOfGrothendieckGroup ] );
 
-DeclareOperationWithDocumentation( "CosyzygyObject",
-        [ IsInt, IsElementOfGrothendieckGroup ],
-        "Returns the <A>i</A>-th syzyies object of <A>chi</A>.",
-        "a graded relative ring element",
-        "i, chi",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the <A>i</A>-th syzyies object of <A>chi</A>.
+#! @Returns a graded relative ring element
+#! @Arguments i, chi
+#! @ChapterInfo Characters, Methods for characters
+DeclareOperation( "CosyzygyObject",
+                  [ IsInt, IsElementOfGrothendieckGroup ] );
 
-DeclareOperationWithDocumentation( "VerticalShift",
-        [ IsElementOfGrothendieckGroup, IsInt ],
-        "Returns the i-th shift of chi.",
-        "a graded relative ring element",
-          "chi, i",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the i-th shift of chi.
+#! @Returns a graded relative ring element
+#! @Arguments chi, i
+#! @ChapterInfo Characters, Methods for characters
+DeclareOperation( "VerticalShift",
+                  [ IsElementOfGrothendieckGroup, IsInt ] );
 
-DeclareOperationWithDocumentation( "Twist",
-        [ IsElementOfGrothendieckGroup, IsInt ],
-        "Returns the i-th twist of chi.",
-        "a graded relative ring element",
-        "chi, i",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the i-th twist of chi.
+#! @Returns a graded relative ring element
+#! @Arguments chi, i
+#! @ChapterInfo Characters, Methods for characters
+DeclareOperation( "Twist",
+                  [ IsElementOfGrothendieckGroup, IsInt ] );
 
-DeclareOperationWithDocumentation( "CombinatorialHom",
-        [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ],
-        "Returns the internal Hom of two graded characters.",
-        "two graded Grothendieck ring elements",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the internal Hom of two graded characters.
+#! @Returns two graded Grothendieck ring elements
+#! @ChapterInfo Characters, Methods for characters
+DeclareOperation( "CombinatorialHom",
+                  [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ] );
+
 
 # constructors:
 
-DeclareGlobalFunctionWithDocumentation( "ElementOfRing",
-        "Creates an element from a Grothendieck ring.",
-        "a homalg ring element",
-        [ "Characters", "Constructors" ]
-        );
+#! @Description
+#!  Creates an element from a Grothendieck ring.
+#! @Returns a homalg ring element
+#! @ChapterInfo Characters, Constructors
+DeclareGlobalFunction( "ElementOfRing" );
 
-DeclareGlobalFunctionWithDocumentation( "ElementOfGradedRing",
-        "Creates an element from a graded Grothendieck ring.",
-        "a homalg ring element",
-        [ "Characters", "Constructors" ]
-        );
+#! @Description
+#!  Creates an element from a graded Grothendieck ring.
+#! @Returns a homalg ring element
+#! @ChapterInfo Characters, Constructors
+DeclareGlobalFunction( "ElementOfGradedRing" );
 
-DeclareGlobalFunctionWithDocumentation( "ElementOfGradedRelativeRing",
-        "Creates an element from a graded relative Grothendieck ring.",
-        "a homalg ring element",
-        [ "Characters", "Constructors" ]
-        );
+#! @Description
+#!  Creates an element from a graded relative Grothendieck ring.
+#! @Returns a homalg ring element
+#! @ChapterInfo Characters, Constructors
+DeclareGlobalFunction( "ElementOfGradedRelativeRing" );
 
-DeclareGlobalFunctionWithDocumentation( "FreeElementOfGradedRelativeRing",
-        "Creates an element from a graded relative Grothendieck ring.",
-        "a homalg ring element",
-        [ "Characters", "Constructors" ]
-        );
+#! @Description
+#!  Creates an element from a graded relative Grothendieck ring.
+#! @Returns a homalg ring element
+#! @ChapterInfo Characters, Constructors
+DeclareGlobalFunction( "FreeElementOfGradedRelativeRing" );
