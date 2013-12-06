@@ -16,27 +16,28 @@
 #
 ####################################
 
-DeclareAttributeWithDocumentation( "GrothendieckRing",
-        IsCharacterTable,
-        "Returns the Grothendieck ring of the character table.",
-        "a ring",
-        [ "Characters", "Constructors" ]
-        );
+#! @Description
+#!  Returns the Grothendieck ring of the character table.
+#! @Returns a ring
+#! @ChapterInfo Characters, Constructors
+DeclareAttribute( "GrothendieckRing",
+                  IsCharacterTable );
 
-DeclareAttributeWithDocumentation( "UnderlyingCharacterTable",
-        IsElementOfGrothendieckGroup,
-        "Returns the character table of the group.",
-        "a character table",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the character table of the group.
+#! @Returns a character table
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "UnderlyingCharacterTable",
+                  IsElementOfGrothendieckGroup );
 
-DeclareAttributeWithDocumentation( "ForgetGroupAction",
-        IsElementOfGrothendieckGroup,
-        "Forget the group action and return the graded character.",
-        "a graded Grothendieck ring element",
-        "chi",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Forget the group action and return the graded character.
+#! @Returns a graded Grothendieck ring element
+#! @Arguments chi
+#! @ChapterInfo Characters, Methods for characters
+DeclareAttribute( "ForgetGroupAction",
+                  IsElementOfGrothendieckGroup );
+
 
 ####################################
 #
@@ -46,38 +47,39 @@ DeclareAttributeWithDocumentation( "ForgetGroupAction",
 
 # basic operations
 
-DeclareOperationWithDocumentation( "Coefficients",
-        [ IsVirtualCharacter ],
-        [ "Returns the decomposition of the virtual character <A>chi</A>,",
-          "i.e., a list including the character table and a list of pairs.",
-          "The second entry of each pair is an irreducible character and the first entry is its multiplicity in <A>chi</A>." ],
-        "a list with two entries",
-        "chi",
-        [ "Characters", "Methods_for_characters" ]
-        );
+#! @Description
+#!  Returns the decomposition of the virtual character <A>chi</A>,
+#!  i.e., a list including the character table and a list of pairs.
+#!  The second entry of each pair is an irreducible character and the first entry is its multiplicity in <A>chi</A>.
+#! @Returns a list with two entries
+#! @Arguments chi
+#! @ChapterInfo Characters, Methods for characters
+DeclareOperation( "Coefficients",
+                  [ IsVirtualCharacter ] );
+
 
 # constructors:
 
-DeclareGlobalFunctionWithDocumentation( "ElementOfGrothendieckRingOfGroup",
-        "Creates an element from a Grothendieck ring.",
-        "a homalg ring element",
-        [ "Characters", "Constructors" ]
-        );
+#! @Description
+#!  Creates an element from a Grothendieck ring.
+#! @Returns a homalg ring element
+#! @ChapterInfo Characters, Constructors
+DeclareGlobalFunction( "ElementOfGrothendieckRingOfGroup" );
 
-DeclareGlobalFunctionWithDocumentation( "ElementOfGradedGrothendieckRingOfGroup",
-        "Creates an element from a graded Grothendieck ring.",
-        "a homalg ring element",
-        [ "Characters", "Constructors" ]
-        );
+#! @Description
+#!  Creates an element from a graded Grothendieck ring.
+#! @Returns a homalg ring element
+#! @ChapterInfo Characters, Constructors
+DeclareGlobalFunction( "ElementOfGradedGrothendieckRingOfGroup" );
 
-DeclareGlobalFunctionWithDocumentation( "ElementOfGradedRelativeGrothendieckRingOfGroup",
-        "Creates an element from a graded relative Grothendieck ring.",
-        "a homalg ring element",
-        [ "Characters", "Constructors" ]
-        );
+#! @Description
+#!  Creates an element from a graded relative Grothendieck ring.
+#! @Returns a homalg ring element
+#! @ChapterInfo Characters, Constructors
+DeclareGlobalFunction( "ElementOfGradedRelativeGrothendieckRingOfGroup" );
 
-DeclareGlobalFunctionWithDocumentation( "FreeElementOfGradedRelativeGrothendieckRingOfGroup",
-        "Creates an element from a graded relative Grothendieck ring.",
-        "a homalg ring element",
-        [ "Characters", "Constructors" ]
-        );
+#! @Description
+#!  Creates an element from a graded relative Grothendieck ring.
+#! @Returns a homalg ring element
+#! @ChapterInfo Characters, Constructors
+DeclareGlobalFunction( "FreeElementOfGradedRelativeGrothendieckRingOfGroup" );
