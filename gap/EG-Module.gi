@@ -468,16 +468,6 @@ InstallMethod( VerticalShift,
   
 end );
 
-##
-InstallMethod( Twist,
-        "for elements of a graded relative Grothendieck ring of a group and an integer",
-        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep, IsInt ],
-  function( chi, i )
-
-    return (-1)^i * VerticalShift( chi, - i );
-
-end );
-
 ####################################
 #
 # constructors:
