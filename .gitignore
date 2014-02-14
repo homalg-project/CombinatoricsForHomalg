@@ -4,6 +4,7 @@
 # exclude patterns (uncomment them if you want to use them):
 # *.[oa]
 *~
+maketest.g
 bin
 change.log
 VERSION
@@ -27,6 +28,8 @@ doc/*.pnr
 doc/*.tex
 doc/*.toc
 doc/*.out
+doc/*css
+doc/*js
 doc/manual.lab
 *.DS_Store
 doc/AutoDocMainFile.xml

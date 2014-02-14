@@ -2,12 +2,11 @@ all: doc test
 
 doc: doc/manual.six
 
-doc/manual.six: createautodoc.g makedoc.g maketest.g ListOfDocFiles.g \
+doc/manual.six: makedoc.g \
 		PackageInfo.g \
 		doc/CombinatoricsForHomalg.bib doc/*.xml \
 		gap/*.gd gap/*.gi examples/*.g
-		gap createautodoc.g
-	        gap makedoc.g
+	  gap makedoc.g
 
 clean:
 	(cd doc ; ./clean)
