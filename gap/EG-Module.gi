@@ -267,11 +267,11 @@ end );
 InstallMethod( HilbertPolynomial,
         "for elements of a graded relative Grothendieck ring of a group",
         [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
-
+        
   function( chi )
-
+    
     return HilbertPolynomial( ForgetGroupAction( chi ) );
-
+    
 end );
 
 ##
