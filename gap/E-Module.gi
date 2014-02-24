@@ -1056,16 +1056,14 @@ InstallMethod( ValuesOfBettiTable,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep ],
         
-  function( chi )
-    local K_i, T_i, sign, socle, socles, d, twist_max, twist_min;
+  function( K_i )
+    local T_i, sign, socle, socles, d, twist_min, twist_max, window;
     
-    if IsZero( chi ) then
+    if IsZero( K_i ) then
         return [ ];
     fi;
     
-    K_i := chi;
-    
-    T_i := ProjectiveCover( K_i );
+    T_i := InjectiveHull( K_i );
     
     sign := 1;
     
@@ -1075,23 +1073,24 @@ InstallMethod( ValuesOfBettiTable,
     
     socles := socle;
     
-    d := Dimension( chi );
+    d := Dimension( K_i );
     
-    twist_max := socle[1][2];
+    ## the +d takes care of the maximal spread of socles
+    twist_min := socle[1][2] + d;
     
-    ## the -d is enough for the interpolation
-    ## and the -1 to compare with ambient dimension, see below
-    twist_min := twist_max - d - 1;
+    ## the +d is enough for the interpolation and
+    ## the +1 is for comparison with the ambient dimension (see below)
+    twist_max := twist_min + d + 1;
     
-    while socle[Length( socle )][2] > twist_min do
+    while socle[1][2] < twist_max do
         
-        K_i := Kernel( T_i, K_i );
+        K_i := Cokernel( K_i, T_i );
         
         if IsZero( K_i ) then
             return [ ];
         fi;
         
-        T_i := ProjectiveCover( K_i );
+        T_i := InjectiveHull( K_i );
         
         sign := -sign;
         
@@ -1099,12 +1098,19 @@ InstallMethod( ValuesOfBettiTable,
         
         socle := List( socle, a -> [ sign * (-1)^a[2] * a[1], a[2] ] );
         
-        socles := Concatenation( socle, socles );
+        Append( socles, socle );
         
     od;
     
     ## extract the table in the window [ twist_min .. twist_max ]
-    return Filtered( socles, a -> a[2] in [ twist_min .. twist_max ] );
+    window := Filtered( socles, a -> a[2] in [ twist_min .. twist_max ] );
+    
+    if Length( window ) < d + 2 then
+        Error( "expecting a list of length d + 2 = ", d + 2,
+               ", but received ", window, "\n" );
+    fi;
+    
+    return window;
     
 end );
 
