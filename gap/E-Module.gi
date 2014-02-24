@@ -1160,6 +1160,7 @@ InstallMethod( ChernPolynomial,
   function( chi )
     
     return ChernPolynomial( ChernCharacter( chi ) );
+    
 end );
 
 ##
