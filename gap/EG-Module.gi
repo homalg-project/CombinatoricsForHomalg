@@ -988,9 +988,10 @@ InstallMethod( Name,
   function( o )
     
     return Concatenation(
+                   "\n",
                    Name( HomogeneousParts( o ) ),
                    "\n |\n v\n P(",
-                   Name( EvalRingElement( BaseSpace( o ) )[1][1] ), ")" );
+                   Name( EvalRingElement( BaseSpace( o ) )[1][1] ), ")\n" );
     
 end );
 
@@ -1003,8 +1004,9 @@ InstallMethod( Name,
   function( o )
     
     return Concatenation(
+                   "\n",
                    Name( Socle( o ) ),
                    "\n |\n | ⊗ ω_E\n v\n P(",
-                   Name( EvalRingElement( BaseSpace( o ) )[1][1] ), ")" );
+                   Name( EvalRingElement( BaseSpace( o ) )[1][1] ), ")\n" );
     
 end );
