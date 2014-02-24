@@ -1126,6 +1126,17 @@ InstallMethod( HilbertPolynomial,
 end );
 
 ##
+InstallMethod( HilbertPolynomial,
+        "for elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep ],
+        
+  function( chi )
+    
+    return HilbertPolynomial( ChernCharacter( chi ) );
+    
+end );
+
+##
 InstallMethod( ElementOfGrothendieckGroup,
         "for elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep ],
@@ -1148,8 +1159,7 @@ InstallMethod( ChernPolynomial,
         
   function( chi )
     
-    return ChernPolynomial( ElementOfGrothendieckGroup( chi ) );
-    
+    return ChernPolynomial( ChernCharacter( chi ) );
 end );
 
 ##

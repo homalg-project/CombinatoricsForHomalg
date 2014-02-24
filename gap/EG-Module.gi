@@ -274,8 +274,27 @@ InstallMethod( HilbertPolynomial,
     
 end );
 
-# G := AlternatingGroup( 5 );
-# chi := ElementOfGradedRelativeGrothendieckRingOfGroup( [ [ Irr( G )[5], 0 ] ], Irr( G )[5] );
+##
+InstallMethod( ChernCharacter,
+        "for elements of a graded relative Grothendieck ring of a group",
+        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
+
+  function( chi )
+
+    return ChernCharacter( ForgetGroupAction( chi ) );
+
+end );
+
+##
+InstallMethod( ChernPolynomial,
+        "for elements of a graded relative Grothendieck ring of a group",
+        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
+
+  function( chi )
+
+    return ChernPolynomial( ForgetGroupAction( chi ) );
+
+end );
 
 ##
 InstallMethod( EulerCharacteristic,
