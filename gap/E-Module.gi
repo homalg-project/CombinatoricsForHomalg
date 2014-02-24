@@ -1109,10 +1109,7 @@ InstallMethod( ValuesOfBettiTable,
 end );
 
 ##
-InstallMethod( HilbertPolynomial,
-        "for elements of a graded relative ring",
-        [ IsElementOfGradedRelativeRingRep ],
-        
+InstallGlobalFunction( HilbertPolynomial_ViaCombinatorialResolution,
   function( chi )
     local t, HP, socles, base_points, euler;
     

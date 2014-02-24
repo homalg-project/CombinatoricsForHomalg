@@ -243,6 +243,11 @@ DeclareAttribute( "ChernPolynomial",
 #! @ChapterInfo Characters, Constructors
 DeclareGlobalFunction( "VariableForGrothendieckHilbertSeries" );
 
+#! @Description
+#!  Compute the Hilbert polynomial.
+#! @Returns a polynomial
+#! @ChapterInfo Characters, Methods for characters
+DeclareGlobalFunction( "HilbertPolynomial_ViaCombinatorialResolution" );
 
 # basic operations
 
