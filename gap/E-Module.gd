@@ -322,7 +322,6 @@ DeclareOperation( "Twist",
 DeclareOperation( "CombinatorialHom",
                   [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ] );
 
-
 # constructors:
 
 #! @Description

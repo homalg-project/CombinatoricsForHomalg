@@ -57,7 +57,6 @@ DeclareAttribute( "ForgetGroupAction",
 DeclareOperation( "Coefficients",
                   [ IsVirtualCharacter ] );
 
-
 # constructors:
 
 #! @Description

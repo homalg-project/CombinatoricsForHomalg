@@ -940,11 +940,12 @@ InstallMethod( One,
         [ IsElementOfGradedRelativeRingRep ],
         
   function( chi )
+    local base_space;
     
-    chi := BaseSpace( chi );
+    base_space := BaseSpace( chi );
     
     return chi!.FreeElementOfGradedRelativeRing(
-                   One( chi ), chi, IsOne );
+                   One( base_space ), base_space, IsOne );
     
 end );
 
@@ -979,6 +980,29 @@ InstallMethod( \*,
                    HomogeneousParts( chi ) * HomogeneousParts( psi ),
                    chiV );
     
+end );
+
+##
+InstallMethod( \*,
+        "for an element of a graded relative ring and a rational",
+        [ IsElementOfGradedRelativeRingRep,
+          IsRat ],
+
+  function( chi, rational )
+
+    return chi * ElementOfGradedRelativeRing( [ [ rational, 0 ] ], BaseSpace( chi ) );
+  
+end );
+
+##
+InstallMethod( \*,
+        "for an element of a graded relative ring and a rational",
+        [ IsRat, IsElementOfGradedRelativeRingRep ],
+
+  function( rational, chi )
+
+    return ElementOfGradedRelativeRing( [ [ rational, 0 ] ], BaseSpace( chi ) ) * chi;
+
 end );
 
 ##
@@ -1225,6 +1249,7 @@ end );
 InstallMethod( VerticalShift,
         "for elements of a graded relative ring and an integer",
         [ IsElementOfGradedRelativeRingRep, IsInt ],
+        
   function( chi, i )
     local s, d;
     
@@ -1240,6 +1265,7 @@ end );
 InstallMethod( Twist,
         "for elements of a graded relative Grothendieck ring of a group and an integer",
         [ IsElementOfGradedRelativeRingRep, IsInt ],
+        
   function( chi, i )
 
     return (-1)^i * VerticalShift( chi, - i );
@@ -1350,6 +1376,17 @@ InstallMethod( Name,
                    " -> P^",
                    String( Dimension( o ) ) );
     
+end );
+
+##
+InstallMethod( String,
+               "for elements of a graded relative ring",
+               [ IsElementOfGradedRelativeRingRep ],
+
+  function( o )
+
+    return Name( HomogeneousParts( o ) );
+  
 end );
 
 ##
