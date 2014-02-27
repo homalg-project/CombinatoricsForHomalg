@@ -48,14 +48,14 @@ DeclareAttribute( "ForgetGroupAction",
 # basic operations
 
 #! @Description
-#!  Returns the decomposition of the virtual character <A>chi</A>,
+#!  Returns the decomposition of the class function <A>chi</A>,
 #!  i.e., a list including the character table and a list of pairs.
 #!  The second entry of each pair is an irreducible character and the first entry is its multiplicity in <A>chi</A>.
 #! @Returns a list with two entries
 #! @Arguments chi
 #! @ChapterInfo Characters, Methods for characters
 DeclareOperation( "Coefficients",
-                  [ IsVirtualCharacter ] );
+                  [ IsClassFunction ] );
 
 # constructors:
 

@@ -344,8 +344,8 @@ end );
 ####################################
 
 InstallMethod( Coefficients,
-        "for virtual characters",
-        [ IsVirtualCharacter ],
+        "for a class function",
+        [ IsClassFunction ],
         
   function( chi )
     local ct, m, p;
@@ -634,6 +634,29 @@ InstallMethod( \*,
     return ElementOfGrothendieckRingOfGroup(
                    EvalRingElement( a ) * EvalRingElement( b ) );
     
+end );
+
+##
+InstallMethod( \*,
+        "for an element of a graded relative Grothendieck ring of group and a rational",
+        [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep,
+          IsRat ],
+
+  function( chi, rational )
+
+    return chi * ElementOfGradedRelativeGrothendieckRingOfGroup( [ [ rational * TrivialCharacter( UnderlyingCharacterTable( chi ) ), 0 ] ], BaseSpace( chi ) );
+
+end );
+
+##
+InstallMethod( \*,
+        "for an element of a graded relative Grothendieck ring of group and a rational",
+        [ IsRat, IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
+
+  function( rational, chi )
+
+    return ElementOfGradedRelativeGrothendieckRingOfGroup( [ [ rational * TrivialCharacter( UnderlyingCharacterTable( chi ) ), 0 ] ], BaseSpace( chi ) ) * chi;
+
 end );
 
 ##
