@@ -1257,7 +1257,7 @@ InstallMethod( VerticalShift,
     
     s := ElementOfGradedRelativeRing( [ [ 1, i ] ], d + 1 );
     
-    return chi*s;
+    return chi * s;
   
 end );
 
@@ -1267,9 +1267,9 @@ InstallMethod( Twist,
         [ IsElementOfGradedRelativeRingRep, IsInt ],
         
   function( chi, i )
-
-    return (-1)^i * VerticalShift( chi, - i );
-
+    
+    return (-1)^i * VerticalShift( chi, -i );
+    
 end );
 
 ####################################

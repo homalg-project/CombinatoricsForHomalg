@@ -457,15 +457,16 @@ end );
 InstallMethod( VerticalShift,
         "for elements of a graded relative Grothendieck ring of a group and an integer",
         [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep, IsInt ],
+        
   function( chi, i )
     local s, ct;
     
     ct := UnderlyingCharacterTable( chi );
-
+    
     s := ElementOfGradedRelativeGrothendieckRingOfGroup( [ [ TrivialCharacter( ct ), i ] ], BaseSpace( chi ) );
     
-    return chi*s;
-  
+    return chi * s;
+    
 end );
 
 ####################################
