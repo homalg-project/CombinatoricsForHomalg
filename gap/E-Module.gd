@@ -322,6 +322,9 @@ DeclareOperation( "Twist",
 DeclareOperation( "CombinatorialHom",
                   [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ] );
 
+DeclareOperation( "HomDimension",
+                  [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ] );
+
 DeclareOperation( "GradedPieces",
                   [ IsElementOfGrothendieckGroup, IsList ] );
 

@@ -1147,6 +1147,37 @@ InstallMethod( CombinatorialHom,
 end );
 
 ##
+InstallMethod( HomDimension,
+        "for a pair of elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep,
+          IsElementOfGradedRelativeRingRep ],
+
+  function( chi, psi )
+    local element, dimension, triv;
+
+    element := GradedPieces( CombinatorialHom( chi, psi ), [ 0 ] );
+
+    if IsZero( element ) then
+
+      return 0;
+
+    fi;
+
+    dimension := EvalRingElement( HomogeneousParts( element ) )[1][1];
+    
+    if IsRat( dimension ) then
+
+      return dimension;
+
+    fi;
+
+    triv := TrivialCharacter( UnderlyingCharacterTable( dimension ) );
+
+    return ScalarProduct( triv, EvalRingElement( dimension ) );
+    
+end );
+        
+##
 InstallMethod( Hom,
         "for two elements of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep and
