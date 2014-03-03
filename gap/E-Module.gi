@@ -554,6 +554,66 @@ InstallMethod( CosyzygyObject,
     
 end );
 
+##
+InstallMethod( GradedPieces,
+               "for an element of a graded relative ring and a list",
+               [ IsElementOfGradedRelativeRingRep, IsList ],
+
+  function( chi, list_of_degrees )
+    local element;
+    
+    element := Filtered( EvalRingElement( HomogeneousParts( chi ) ), i -> i[2] in list_of_degrees );
+
+    if element = [ ] then
+
+      return Zero( chi );
+
+    fi;
+               
+    return chi!.ElementOfGradedRelativeRing( element, BaseSpace( chi ) );
+    
+end );
+
+##
+InstallMethod( TruncationWithGivenLowestDegree,
+               "for an element of a graded relative ring and an integer",
+               [ IsElementOfGradedRelativeRingRep, IsInt ],
+
+  function( chi, lowest_degree )
+    local element;
+
+    element := Filtered( EvalRingElement( HomogeneousParts( chi ) ), i -> i[2] >= lowest_degree );
+
+    if element = [ ] then
+
+      return Zero( chi );
+
+    fi;
+
+    return chi!.ElementOfGradedRelativeRing( element, BaseSpace( chi ) );
+
+end );
+
+##
+InstallMethod( TruncationWithGivenHighestDegree,
+               "for an element of a graded relative ring and an integer",
+               [ IsElementOfGradedRelativeRingRep, IsInt ],
+
+  function( chi, highest_degree )
+    local element;
+
+    element := Filtered( EvalRingElement( HomogeneousParts( chi ) ), i -> i[2] <= highest_degree );
+
+    if element = [ ] then
+
+      return Zero( chi );
+
+    fi;
+
+    return chi!.ElementOfGradedRelativeRing( element, BaseSpace( chi ) );
+
+end );
+
 ####################################
 #
 # constructors:
@@ -1020,6 +1080,34 @@ InstallMethod( Dual,
 end );
 
 ##
+InstallMethod( Dual,
+        "for an element of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep ],
+
+  function( chi )
+    local element, i;
+
+    element := [ ];
+
+    for i in EvalRingElement( HomogeneousParts( chi ) ) do
+
+      if IsRat( i[1] ) then
+
+        Add( element, [ i[1], -i[2] ] );
+
+      else
+
+        Add( element, [ Dual( i[1] ), -i[2] ] );
+
+      fi;
+    
+    od;
+
+    return chi!.ElementOfGradedRelativeRing( element, BaseSpace( chi ) );
+    
+end );
+
+##
 InstallMethod( Head,
         "for an element of a graded relative ring",
         [ IsElementOfGradedRelativeRingRep and
@@ -1036,7 +1124,7 @@ end );
 
 ##
 InstallMethod( CombinatorialHom,
-        "for two elements of a graded relative ring",
+        "for two elements of a graded ring",
         [ IsElementOfGradedRingRep,
           IsElementOfGradedRingRep ],
         
@@ -1044,6 +1132,18 @@ InstallMethod( CombinatorialHom,
     
     return Dual( chi ) * psi;
     
+end );
+
+##
+InstallMethod( CombinatorialHom,
+        "for two elements of a graded relative ring",
+        [ IsElementOfGradedRelativeRingRep,
+          IsElementOfGradedRelativeRingRep ],
+
+  function( chi, psi )
+
+    return Dual( chi ) * psi;
+
 end );
 
 ##

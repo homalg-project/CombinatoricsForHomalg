@@ -322,6 +322,15 @@ DeclareOperation( "Twist",
 DeclareOperation( "CombinatorialHom",
                   [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ] );
 
+DeclareOperation( "GradedPieces",
+                  [ IsElementOfGrothendieckGroup, IsList ] );
+
+DeclareOperation( "TruncationWithGivenLowestDegree",
+                  [ IsElementOfGrothendieckGroup, IsInt ] );
+
+DeclareOperation( "TruncationWithGivenHighestDegree",
+                  [ IsElementOfGrothendieckGroup, IsInt ] );
+
 # constructors:
 
 #! @Description
