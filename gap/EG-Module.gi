@@ -343,6 +343,60 @@ end );
 #
 ####################################
 
+InstallMethod( CommonCharacters,
+               "for a pair of elements of a graded relative Grothendieck ring of group",
+               [ IsElementOfGrothendieckRingOfGroupRep, IsElementOfGrothendieckRingOfGroupRep ],
+
+  function( chi, psi )
+    local chi_character_numbers, psi_character_numbers, common_character_numbers, irreducible_characters;
+    
+    chi_character_numbers := List( Coefficients( chi ), i -> i[2] );
+    
+    psi_character_numbers:= List( Coefficients( psi ), i -> i[2] );
+    
+    common_character_numbers := Intersection( chi_character_numbers, psi_character_numbers );
+    
+    if common_character_numbers = [ ] then
+
+      return Zero( chi );
+
+    fi;
+
+    irreducible_characters := Irr( UnderlyingCharacterTable( chi ) );
+    
+    return ElementOfGrothendieckRingOfGroup( Sum( common_character_numbers, i -> irreducible_characters[ i ] ) );
+    
+end );
+
+InstallMethod( CommonCharacters,
+               "for a pair of elements of a graded relative Grothendieck ring of group",
+               [ IsElementOfGradedRelativeGrothendieckRingOfGroupRep, IsElementOfGradedRelativeGrothendieckRingOfGroupRep ],
+
+  function( chi, psi )
+    local homogeneous_parts_chi, homogeneous_parts_psi, ring_element, chi_pair, psi_pair;
+
+    homogeneous_parts_chi := EvalRingElement( HomogeneousParts( chi ) );
+
+    homogeneous_parts_psi := EvalRingElement( HomogeneousParts( psi ) );
+
+    ring_element := [ ];
+
+    for chi_pair in homogeneous_parts_chi do
+
+      psi_pair := First( homogeneous_parts_psi, i -> chi_pair[2] = i[2] );
+      
+      if not psi_pair = fail then
+      
+        Add( ring_element, [ CommonCharacters( chi_pair[1], psi_pair[1] ), chi_pair[2] ] );
+      
+      fi;
+      
+    od;
+
+    return ElementOfGradedRelativeGrothendieckRingOfGroup( ring_element, BaseSpace( chi ) );
+
+end );
+
 InstallMethod( Coefficients,
         "for a class function",
         [ IsClassFunction ],

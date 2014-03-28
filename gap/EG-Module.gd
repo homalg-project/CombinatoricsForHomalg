@@ -57,6 +57,9 @@ DeclareAttribute( "ForgetGroupAction",
 DeclareOperation( "Coefficients",
                   [ IsClassFunction ] );
 
+DeclareOperation( "CommonCharacters",
+                  [ IsElementOfGrothendieckGroup, IsElementOfGrothendieckGroup ] );
+
 # constructors:
 
 #! @Description
