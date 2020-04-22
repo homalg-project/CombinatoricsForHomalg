@@ -208,7 +208,9 @@ PackageInfoURL :=
 #   is an example of how to create a <span class=\"pkgname\">GAP</span> \
 #   package. It has little functionality except for being a package",
 #
-#PackageWWWHome := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example",
+AbstractHTML   :=  "",
+
+PackageWWWHome := "https://github.com/homalg-project/CombinatoricsForHomalg",
 #               
 ##  Here is the information on the help books of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the 
@@ -241,8 +243,6 @@ PackageDoc := rec(
   # use same as in GAP            
   BookName  := "CombinatoricsForHomalg",
   # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
-  Archive := 
-    "http://homalg.math.rwth-aachen.de/~barakat/homalg-project/CombinatoricsForHomalg/CombinatoricsForHomalg.tar.gz",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
